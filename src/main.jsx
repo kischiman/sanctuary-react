@@ -20,7 +20,7 @@ if (!rootElement) {
     
     root.render(
       <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename="/sanctuary-react">
           <App />
         </BrowserRouter>
       </React.StrictMode>
