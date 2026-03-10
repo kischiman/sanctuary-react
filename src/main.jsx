@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import App from './App'
-// import App from './App.minimal' // Uncomment to test minimal version
+// import App from './App'
+import App from './App.minimal' // Uncomment to test minimal version
 import './styles/global.css'
 
 console.log('main.jsx loaded')
