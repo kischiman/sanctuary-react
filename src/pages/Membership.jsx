@@ -10,7 +10,7 @@ export default function Membership() {
         <div className="breadcrumb">Membership — By Invitation</div>
         <h1>Become a Citizen of Sanctuary</h1>
         <p className="subtitle">
-          A structured space for founders who build meaningful tools — together. More users on your product. Faster development cycles. A sustainable way of working.
+          A structured space for builders who design and experiment with meaningful tools — together. More users on your product. Faster development cycles. A sustainable way of working.
         </p>
       </div>
 
