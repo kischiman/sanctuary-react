@@ -68,23 +68,21 @@ export default function Home() {
       {/* RESIDENCY */}
       <section className="section-wrap" id="residency">
         <hr className="rule" />
-        <FadeIn className="two-col" style={{ paddingBottom: '1.5rem' }}>
+        <FadeIn className="two-col">
           <div className="sidebar-label">03 — Residency</div>
           <div className="content">
             <h2>Visit a Sanctuary — a curated co-living space where health, nature, and deep collaborative innovation are integrated by design</h2>
+            <p>
+              A "rolling residency" with continuous monthly access in various locations. Designed to help you research and develop your project, go on adventures with peers, and improve your health in nature.
+            </p>
+            <div className="location-tags">
+              <span className="location-tag">Thailand</span>
+              <span className="location-tag">Spain</span>
+              <span className="location-tag">Portugal</span>
+              <span className="location-tag">+ More</span>
+            </div>
+            <a href="#" className="section-link">Explore our Residency Chapters →</a>
           </div>
-        </FadeIn>
-        <FadeIn className="residency-card">
-          <p>
-            A "rolling residency" with continuous monthly access in various locations. Designed to help you research and develop your project, go on adventures with peers, and improve your health in nature.
-          </p>
-          <div className="location-tags">
-            <span className="location-tag">Thailand</span>
-            <span className="location-tag">Spain</span>
-            <span className="location-tag">Portugal</span>
-            <span className="location-tag">+ More</span>
-          </div>
-          <a href="#" className="section-link">Explore our Residency Chapters →</a>
         </FadeIn>
       </section>
 
