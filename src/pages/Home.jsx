@@ -45,7 +45,7 @@ export default function Home() {
       <section className="section-wrap" id="accountability">
         <hr className="rule" />
         <FadeIn className="two-col">
-          <div className="sidebar-label">02 — Accountability</div>
+          <div className="sidebar-label">02 — Incubation</div>
           <div className="content">
             <h2>Accelerate your progress and get accountability</h2>
             <p>
@@ -69,9 +69,9 @@ export default function Home() {
       <section className="section-wrap" id="residency">
         <hr className="rule" />
         <FadeIn className="two-col">
-          <div className="sidebar-label">03 — Residency</div>
+          <div className="sidebar-label">03 — Actualizaion</div>
           <div className="content">
-            <h2>Visit a Sanctuary — a curated co-living space where health, nature, and deep collaborative innovation are integrated by design</h2>
+            <h2>Visit a Sanctuary — a curated co-living space for health, experimentation, and collaborative innovation</h2>
             <p>
               A "rolling residency" with continuous monthly access in various locations. Designed to help you research and develop your project, go on adventures with peers, and improve your health in nature.
             </p>

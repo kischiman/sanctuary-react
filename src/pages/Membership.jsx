@@ -55,6 +55,9 @@ export default function Membership() {
       {/* PRICING */}
       <div className="pricing-section">
         <h2>Investment Options</h2>
+        <p style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 2rem 1.5rem', color: 'var(--text-secondary)' }}>
+          All financial contributions are added to a common pool. All members with "skin in the game" decide how the resources are allocated.
+        </p>
       </div>
 
       <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 2rem 3rem' }}>
