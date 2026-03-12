@@ -81,7 +81,7 @@ export default function Home() {
               <span className="location-tag">Portugal</span>
               <span className="location-tag">+ More</span>
             </div>
-            <a href="#" className="section-link">Explore our Residency Chapters →</a>
+            <a href="https://www.notion.so/deepworkstudio/SanctuaryOS-3084f7ca9987809485d5da8f68e203b2?source=copy_link" target="_blank" rel="noopener noreferrer" className="section-link">Explore our Residency Chapters →</a>
           </div>
         </FadeIn>
       </section>
