@@ -34,7 +34,7 @@ export default function Home() {
           <div className="content">
             <h2>Learn from our free monthly research publication</h2>
             <p>
-              How can AI and web3 technology be used to improve our social fabric? Dig deep into projects and hypotheses that fuel our curiosity. Monthly updates with deep-dives on what we've learned, how it works, and how to get involved.
+              How can AI and web3 technology be used to improve our social fabric? Dig deep into projects and hypotheses that fuel our curiosity. Monthly updates on what we've learned.
             </p>
             <a href="#" className="section-link">Subscribe to our Research Reports →</a>
           </div>
@@ -49,7 +49,7 @@ export default function Home() {
           <div className="content">
             <h2>Accelerate your progress and get accountability</h2>
             <p>
-              Share your progress in facilitated weekly feedback rounds to refine your concepts, find users and value-aligned collaborators. Each session is a small group of 3–4 members, with structured rounds where you present progress, get critique, and leave with clear next steps.
+              Share your progress online in facilitated weekly feedback rounds to refine your concepts, find users and value-aligned collaborators. Each session is a small group of 3–4 members, with structured rounds where you present progress, get critique, and leave with clear next steps.
             </p>
             <Link to="/membership" className="section-link">Become a Citizen of Sanctuary →</Link>
           </div>

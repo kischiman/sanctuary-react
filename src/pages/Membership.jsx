@@ -24,7 +24,6 @@ export default function Membership() {
             <h2 className="invitation-heading">The Sanctuary community is inviting you</h2>
             <p>You're building a product you believe in and want to surround yourself with others doing the same.</p>
             <p>Sanctuary is not open enrollment. Every member is personally vetted by our community for cultural fit, complementary skills, and alignment with the group's shared vision.</p>
-            <p>This isn't about exclusivity — it's about making sure the people around you are working on things that matter, and that you can genuinely help each other.</p>
           </div>
         </div>
       </FadeIn>
@@ -54,9 +53,9 @@ export default function Membership() {
 
       {/* PRICING */}
       <div className="pricing-section">
-        <h2>Investment Options</h2>
+        <h2>Participation Options</h2>
         <p style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 2rem 1.5rem', color: 'var(--text-secondary)' }}>
-          All financial contributions are added to a common pool. All members with "skin in the game" decide how the resources are allocated.
+          All financial contributions are added to a common pool. All members decide how the resources are allocated.
         </p>
       </div>
 
@@ -67,6 +66,7 @@ export default function Membership() {
             <div className="tier-name">Explorer</div>
             <div className="tier-price">$0</div>
             <div className="tier-period">Per month</div>
+            <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>or equivalent non-monetary contribution</div>
             <div className="tier-promo" style={{ visibility: 'hidden' }}>—</div>
             <ul className="tier-features">
               <li>Research publication archive</li>
@@ -74,7 +74,7 @@ export default function Membership() {
               <li>1:1 expert sessions available as add-ons</li>
             </ul>
             <div className="tier-cta">
-              <a href="#" className="btn-tier btn-tier--outline">Subscribe Free →</a>
+              <a href="#" className="btn-tier btn-tier--outline">Subscribe →</a>
             </div>
           </div>
 
@@ -83,6 +83,7 @@ export default function Membership() {
             <div className="tier-name">Resident</div>
             <div className="tier-price"><span className="original">$2,500</span>$990</div>
             <div className="tier-period">Per year</div>
+            <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>or equivalent non-monetary contribution</div>
             <div className="tier-promo">Reduced rate until September 2026</div>
             <ul className="tier-features">
               <li>Research publication and summary</li>
@@ -94,7 +95,7 @@ export default function Membership() {
               <li>Residency credit to reduce nightly rate</li>
             </ul>
             <div className="tier-cta">
-              <a href="#" className="btn-tier btn-tier--filled">Start the Conversation →</a>
+              <a href="#" className="btn-tier btn-tier--filled">Share your details →</a>
             </div>
           </div>
 
@@ -103,6 +104,7 @@ export default function Membership() {
             <div className="tier-name">Citizen</div>
             <div className="tier-price"><span className="original">$250</span>$99</div>
             <div className="tier-period">Per month</div>
+            <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>or equivalent non-monetary contribution</div>
             <div className="tier-promo">Reduced rate until September 2026</div>
             <ul className="tier-features">
               <li>Research publication and summary</li>
@@ -113,7 +115,7 @@ export default function Membership() {
               <li>Access to curated Sanctuary residencies</li>
             </ul>
             <div className="tier-cta">
-              <a href="#" className="btn-tier btn-tier--outline">Start the Conversation →</a>
+              <a href="#" className="btn-tier btn-tier--outline">Share your details →</a>
             </div>
           </div>
         </FadeIn>
