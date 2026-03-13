@@ -18,7 +18,7 @@
 
 /* --- SECTION WRAPPER --- */
 .profiles {
-  padding: 5rem 0 8rem;
+  padding: 1rem 0 8rem;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
   background: var(--cream-light);
@@ -45,7 +45,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  height: 580px;
+  height: 480px;
   margin: 0 auto;
   max-width: 1200px;
 }

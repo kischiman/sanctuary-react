@@ -43,7 +43,6 @@ export default function Home() {
 
       {/* COMMUNITY PROFILES */}
       <section className="profiles">
-        <div className="profiles-section-label">Who builds at Sanctuary</div>
         <div className="card-fan">
 
           {/* Justina */}
