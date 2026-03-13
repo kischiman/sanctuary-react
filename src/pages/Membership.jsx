@@ -8,7 +8,7 @@ export default function Membership() {
       <div className="page-header">
         <hr />
         <div className="breadcrumb">Membership — By Invitation</div>
-        <h1>Become a Citizen of Sanctuary</h1>
+        <h1>Join the Sanctuary network</h1>
         <p className="subtitle">
           A structured space for builders who design and experiment with meaningful tools — together. More users on your product. Faster development cycles. A sustainable way of working.
         </p>
@@ -55,7 +55,7 @@ export default function Membership() {
       <div className="pricing-section">
         <h2>Participation Options</h2>
         <p style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 2rem 1.5rem', color: 'var(--text-secondary)' }}>
-          All financial contributions are added to a common pool. All members decide how the resources are allocated.
+          All financial contributions are added to a common pool. All members decide how the resources are allocated. Your first month subscription gets your money back if you're not satisfied.
         </p>
       </div>
 
@@ -101,7 +101,7 @@ export default function Membership() {
 
           {/* Builder */}
           <div className="tier">
-            <div className="tier-name">Citizen</div>
+            <div className="tier-name">Member</div>
             <div className="tier-price"><span className="original">$250</span>$99</div>
             <div className="tier-period">Per month</div>
             <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>or equivalent non-monetary contribution</div>
