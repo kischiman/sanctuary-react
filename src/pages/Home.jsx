@@ -35,7 +35,7 @@ export default function Home() {
           <div className="content">
             <h2>Make tangible progress alongside a curated community</h2>
             <p>
-            Our high-signal, low-noise collective combines the emotional safety of a close-knit collective with the strategic opportunities of a professional network. Supported by individuals who are more interested in constructing the future than extracting from the present.
+            Our high-signal, low-noise collective combines the emotional safety of a close-knit collective with the strategic opportunities of a professional network. That safety is what makes honest feedback possible. 
             </p>
           </div>
         </FadeIn>
