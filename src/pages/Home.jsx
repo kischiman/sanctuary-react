@@ -16,14 +16,12 @@ export default function Home() {
       <div className="hero">
         <hr className="hero-rule" />
         <div className="hero-volume">
-          <span>Cosmo-Local Research Lab</span>
-          <span>Est. 2024</span>
         </div>
         <h1>
           You're creating socio-technical infrastructure<sup onClick={() => handleTooltipToggle('footnote-1')} className="clickable-footnote">1</sup>. Let's accelerate and make it last.
         </h1>
         <p className="hero-subtitle">
-          A cosmo-local<sup onClick={() => handleTooltipToggle('footnote-2')} className="clickable-footnote">2</sup> research lab for builders, researchers, and designers at the intersection of social systems and technology.
+          A cosmo-local<sup onClick={() => handleTooltipToggle('footnote-2')} className="clickable-footnote">2</sup> research incubator for builders, researchers, and designers at the intersection of social systems and technology.
         </p>
       </div>
 
@@ -35,14 +33,16 @@ export default function Home() {
           <div className="content">
             <h2>Make tangible progress alongside a curated community</h2>
             <p>
-            Our high-signal, low-noise collective combines the emotional safety of a close-knit collective with the strategic opportunities of a professional network. That safety is what makes honest feedback possible. 
+            Our high-signal, low-noise collective combines the emotional safety of a close-knit collective with the strategic opportunities of a professional network.  
             </p>
+            <Link to="/membership" className="section-link">Join the Sanctuary network →</Link>
+
           </div>
         </FadeIn>
       </section>
 
       {/* COMMUNITY PROFILES */}
-      <section className="profiles">
+      <section className="profiles" style={{ borderTop: 'none' }}>
         <div className="card-fan">
 
           {/* Justina */}
@@ -146,18 +146,18 @@ export default function Home() {
 
       {/* RESEARCH LAB */}
       <section className="section-wrap" id="research-lab" style={{ position: 'relative', zIndex: 1 }}>
-        <hr className="rule" />
         <FadeIn className="two-col">
           <div className="sidebar-label">02 — Container</div>
           <div className="content">
-            <h2>A magical research lab for how we live and work together</h2>
+            <h2>A magical co-living container to experiment with how we live and work together</h2>
             <p>
-              Sanctuary isn't just a co-living residency — it's an ongoing experiment in how environment, rituals, and collaboration change what we can build. The reason projects accelerate here isn't a rigid program — it's the container. A carefully curated group of 5-10, co-living that feels like home within hours, shared meals, adventurous trips, and a health-first culture.
+              Sanctuary isn't just a co-living residency — it's an ongoing experiment in how environment, rituals, adnd digital tools can accelerate what we can create. A carefully curated group of 5-10, co-living that feels like home within hours, shared meals, adventurous trips, and a health-first culture.
             </p>
+            <img src="/sanctuary-react/co-living-sunset.jpg" alt="Modern co-living space with large windows showing people working together inside, surrounded by mountains at sunset" style={{ width: '100%', borderRadius: '8px', margin: '2rem 0' }} />
             <p>
               Each chapter is co-created by the community. We test coordination tools, reflect on what works, and treat the residency itself as a design object. If you're drawn to unconventional ways of exploring and creating, you'll feel it here.
             </p>
-            <Link to="/membership" className="section-link">Become a Citizen of Sanctuary →</Link>
+            <Link to="/membership" className="section-link">Learn more →</Link>
           </div>
         </FadeIn>
       </section>
@@ -170,8 +170,9 @@ export default function Home() {
           <div className="content">
             <h2>Accountability beyond the residency</h2>
             <p>
-              Every resident arrives with a project and a set of open questions. Through structured, honest feedback sessions, IRL events, and peer accountability, you move through the blockers that have been sitting in your queue for months and always leave with clear next steps.
+              Our members bring a project and a set of open questions. Through structured, online feedback sessions, IRL events, and peer accountability, you move through the blockers that have been sitting in your queue for months and always leave with clear next steps.
             </p>
+            <Link to="/membership" className="section-link">Explore the projects →</Link>
           </div>
         </FadeIn>
       </section>
@@ -184,7 +185,7 @@ export default function Home() {
           <div className="content">
             <h2>Learn from our research publication</h2>
             <p>
-              How can AI and web3 technology be used to improve our social fabric? Dig deep into projects and hypotheses that fuel our curiosity. Monthly updates with deep-dives on what we've learned, how it works, and how to get involved.
+              How might AI and web3 technology be used to improve our social fabric? Dig deep into projects and hypotheses that fuel our curiosity. Monthly updates with deep-dives on what we've learned, how it works, and how to get involved.
             </p>
             <Link to="/membership" className="section-link">Subscribe to our Research Reports →</Link>
           </div>

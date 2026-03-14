@@ -10,7 +10,7 @@ export default function Membership() {
         <div className="breadcrumb">Membership — By Invitation</div>
         <h1>Join the Sanctuary network</h1>
         <p className="subtitle">
-          A structured space for builders who design and experiment with meaningful tools — together. More users on your product. Faster development cycles. A sustainable way of working.
+        Stop burning your remaining runway on bad ideas. More users on your product. Faster feedback and development cycles. A sustainable way of working.
         </p>
       </div>
 
@@ -66,12 +66,11 @@ export default function Membership() {
             <div className="tier-name">Explorer</div>
             <div className="tier-price">$0</div>
             <div className="tier-period">Per month</div>
-            <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>or equivalent non-monetary contribution</div>
             <div className="tier-promo" style={{ visibility: 'hidden' }}>—</div>
             <ul className="tier-features">
-              <li>Research publication archive</li>
               <li>Async updates from group sessions</li>
               <li>1:1 expert sessions available as add-ons</li>
+              <li>Research publication archive</li>
             </ul>
             <div className="tier-cta">
               <a href="#" className="btn-tier btn-tier--outline">Subscribe →</a>
@@ -83,16 +82,15 @@ export default function Membership() {
             <div className="tier-name">Resident</div>
             <div className="tier-price"><span className="original">$2,500</span>$990</div>
             <div className="tier-period">Per year</div>
-            <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>or equivalent non-monetary contribution</div>
             <div className="tier-promo">Reduced rate until September 2026</div>
             <ul className="tier-features">
-              <li>Research publication and summary</li>
-              <li>Weekly facilitated group sessions with fellow builders</li>
-              <li>Structured peer advice on product, growth, strategy</li>
-              <li>Written documentation on your progress and key decisions</li>
+              <li>Structured expert advice on product, growth, and strategy</li>
+              <li>Weekly facilitated product feedback sessions</li>
               <li>1:1 strategy sessions with community experts</li>
               <li>Priority access to curated Sanctuary residencies</li>
               <li>Residency credit to reduce nightly rate</li>
+              <li>Documentation on your progress</li>
+              <li>Research publication and summary</li>
             </ul>
             <div className="tier-cta">
               <a href="#" className="btn-tier btn-tier--filled">Share your details →</a>
@@ -104,21 +102,28 @@ export default function Membership() {
             <div className="tier-name">Member</div>
             <div className="tier-price"><span className="original">$250</span>$99</div>
             <div className="tier-period">Per month</div>
-            <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>or equivalent non-monetary contribution</div>
             <div className="tier-promo">Reduced rate until September 2026</div>
             <ul className="tier-features">
-              <li>Research publication and summary</li>
-              <li>Weekly facilitated group sessions with fellow builders</li>
-              <li>Structured peer advice on product, growth, strategy</li>
-              <li>Written documentation on your progress and key decisions</li>
-              <li>1:1 strategy sessions with communityexperts</li>
+            <li>Structured expert advice on product, growth, and strategy</li>
+              <li>Weekly facilitated product feedback sessions</li>
+              <li>1:1 strategy sessions with community experts</li>
               <li>Access to curated Sanctuary residencies</li>
+              <li>Documentation on your progress</li>
+              <li>Research publication and summary</li>
             </ul>
             <div className="tier-cta">
               <a href="#" className="btn-tier btn-tier--outline">Share your details →</a>
             </div>
           </div>
         </FadeIn>
+      </div>
+
+      {/* JOIN OUR TEAM */}
+      <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 2rem 4rem', textAlign: 'center' }}>
+        <h2>Join our team</h2>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+          We aren't a typical company. Tell us what you're interested in and we can explore how to work together. Get in touch here.
+        </p>
       </div>
     </>
   )

@@ -213,23 +213,34 @@
   background: transparent;
 }
 
-/* --- RESPONSIVE: stack vertically on mobile --- */
+/* --- RESPONSIVE: horizontal scroll on mobile --- */
 @media (max-width: 900px) {
   .card-fan {
     height: auto;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 1.25rem;
-    padding: 0 1rem;
+    gap: 1rem;
+    padding: 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .card-fan::-webkit-scrollbar {
+    display: none;
   }
 
   .profile-card {
     position: relative !important;
     left: auto !important;
     transform: none !important;
-    width: 100%;
-    max-width: 320px;
-    height: auto;
+    width: 280px;
+    height: 400px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
   }
 
   .profile-card:hover {
