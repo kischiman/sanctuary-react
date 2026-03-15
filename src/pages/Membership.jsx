@@ -10,7 +10,7 @@ export default function Membership() {
         <div className="breadcrumb">Membership — By Invitation</div>
         <h1>Join the Sanctuary network</h1>
         <p className="subtitle">
-        Stop burning your remaining runway on bad ideas. More users on your product. Faster feedback and development cycles. A sustainable way of working.
+        Stop burning your remaining runway on constant pivots. Faster feedback and development cycles. More users on your product. A sustainable way of working.
         </p>
       </div>
 
