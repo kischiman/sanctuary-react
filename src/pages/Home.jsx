@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import FadeIn from '../components/FadeIn'
 import '../styles/profile-cards.css'
-import { useState } from 'react'
 
 // Import face images
 import justinaFace from '../assets/faces/justina.webp'
@@ -12,11 +11,6 @@ import dayvanFace from '../assets/faces/dayvan.webp'
 import annaFace from '../assets/faces/Anna-Square.webp'
 
 export default function Home() {
-  const [activeTooltip, setActiveTooltip] = useState(null)
-
-  const handleTooltipToggle = (id) => {
-    setActiveTooltip(activeTooltip === id ? null : id)
-  }
 
   return (
     <>
@@ -26,10 +20,10 @@ export default function Home() {
         <div className="hero-volume">
         </div>
         <h1>
-          You're creating socio-technical infrastructure<sup onClick={() => handleTooltipToggle('footnote-1')} className="clickable-footnote">1</sup>. Let's accelerate and make it last.
+          You're creating socio-technical infrastructure. Let's accelerate and make it last.
         </h1>
         <p className="hero-subtitle">
-          A cosmo-local<sup onClick={() => handleTooltipToggle('footnote-2')} className="clickable-footnote">2</sup> research incubator for builders solving real problems with simple products and a clear path to revenue.
+          A cosmo-local research incubator for builders solving real problems with simple products and a clear path to revenue.
         </p>
       </div>
 
@@ -159,7 +153,7 @@ export default function Home() {
           <div className="content">
             <h2>A magical co-living container to experiment with how we live and work together</h2>
             <p>
-              Sanctuary has a rolling residency — an ongoing research lab for how environment, rituals, adnd digital tools can accelerate what we can build. A carefully curated group of 5-10, co-living that feels like home within hours, shared meals, adventurous trips, and a health-first culture.
+              Sanctuary has a rolling residency — an ongoing innovation lab for how environment, rituals, adnd tools can accelerate what we can build. A carefully curated group of 5-10, co-living that feels like home within hours, shared meals, adventurous trips, and a health-first culture.
             </p>
             <img src="/sanctuary-react/co-living-sunset.jpg" alt="Modern co-living space with large windows showing people working together inside, surrounded by mountains at sunset" style={{ width: '100%', borderRadius: '8px', margin: '2rem 0' }} />
             <p>
@@ -212,24 +206,6 @@ export default function Home() {
       </section>
 
 
-      {/* TOOLTIPS */}
-      {activeTooltip === 'footnote-1' && (
-        <div className="tooltip-overlay" onClick={() => setActiveTooltip(null)}>
-          <div className="tooltip-content" onClick={e => e.stopPropagation()}>
-            <button className="tooltip-close" onClick={() => setActiveTooltip(null)}>×</button>
-            <p><strong>Socio-technical infrastructure</strong> refers to the interdependent relationship between the <strong>social systems</strong> (people, rules, and culture) and the <strong>technical systems</strong> (technology and infrastructure) of a society.</p>
-          </div>
-        </div>
-      )}
-      
-      {activeTooltip === 'footnote-2' && (
-        <div className="tooltip-overlay" onClick={() => setActiveTooltip(null)}>
-          <div className="tooltip-content" onClick={e => e.stopPropagation()}>
-            <button className="tooltip-close" onClick={() => setActiveTooltip(null)}>×</button>
-            <p>In very basic terms <strong>cosmo-localism</strong> describes the dynamic potentials of our emerging globally distributed knowledge and design commons in conjunction with the emerging (high and low tech) capacity for localized production of value.</p>
-          </div>
-        </div>
-      )}
     </>
   )
 }

@@ -1,5 +1,4 @@
 import FadeIn from '../components/FadeIn'
-import invitationImg from '../assets/invitation.png'
 
 export default function Membership() {
   return (
@@ -14,24 +13,11 @@ export default function Membership() {
         </p>
       </div>
 
-      {/* BY INVITATION */}
-      <FadeIn className="invitation-band">
-        <div className="invitation-inner">
-          <div className="invitation-image">
-            <img src={invitationImg} alt="Sanctuary invitation" />
-          </div>
-          <div>
-            <h2 className="invitation-heading">The Sanctuary community is inviting you</h2>
-            <p>You're building a product you believe in and want to surround yourself with others doing the same.</p>
-            <p>Sanctuary is not open enrollment. Every member is personally vetted by our community for cultural fit, complementary skills, and alignment with the group's shared vision.</p>
-          </div>
-        </div>
-      </FadeIn>
-
       {/* APPLICATION PROCESS */}
       <FadeIn className="process-section">
         <hr style={{ border: 'none', borderTop: '1px solid var(--rule)', marginBottom: '2rem' }} />
         <h2>Application Process</h2>
+        <p style={{ marginBottom: '2rem', color: 'var(--text-secondary)' }}>You're building a product you believe in and want to surround yourself with others doing the same. Sanctuary is not open enrollment. Every member is personally vetted by our community for cultural fit, complementary skills, and alignment with the group's shared vision.</p>
         <div className="process-steps">
           <div className="process-step">
             <div className="step-num">01</div>

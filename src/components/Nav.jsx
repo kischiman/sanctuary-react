@@ -5,16 +5,18 @@ export default function Nav() {
 
   return (
     <nav>
-      <Link to="/" className="nav-wordmark">Sanctuary</Link>
-      <ul className="nav-links">
-        <li><a href="/#research">Publication</a></li>
-        <li><a href="https://www.notion.so/deepworkstudio/SanctuaryOS-3084f7ca9987809485d5da8f68e203b2?source=copy_link" target="_blank" rel="noopener noreferrer">Container</a></li>
-        <li>
-          <Link to="/membership" className={`nav-cta ${pathname === '/membership' ? 'active' : ''}`}>
-            Join Sanctuary
-          </Link>
-        </li>
-      </ul>
+      <div className="nav-container">
+        <Link to="/" className="nav-wordmark">Sanctuary</Link>
+        <ul className="nav-links">
+          <li><a href="/#research">Publication</a></li>
+          <li><a href="https://www.notion.so/deepworkstudio/SanctuaryOS-3084f7ca9987809485d5da8f68e203b2?source=copy_link" target="_blank" rel="noopener noreferrer">Container</a></li>
+          <li>
+            <Link to="/membership" className={`nav-cta ${pathname === '/membership' ? 'active' : ''}`}>
+              Join Sanctuary
+            </Link>
+          </li>
+        </ul>
+      </div>
     </nav>
   )
 }
