@@ -29,7 +29,7 @@ export default function Home() {
           You're creating socio-technical infrastructure<sup onClick={() => handleTooltipToggle('footnote-1')} className="clickable-footnote">1</sup>. Let's accelerate and make it last.
         </h1>
         <p className="hero-subtitle">
-          A cosmo-local<sup onClick={() => handleTooltipToggle('footnote-2')} className="clickable-footnote">2</sup> research incubator for builders, researchers, and designers solving real problems with simple, monetisable products.
+          A cosmo-local<sup onClick={() => handleTooltipToggle('footnote-2')} className="clickable-footnote">2</sup> research incubator for builders solving real problems with products that have a clear path to revenue.
         </p>
       </div>
 
