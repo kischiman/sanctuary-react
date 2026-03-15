@@ -63,7 +63,7 @@ export default function Home() {
           <div className="profile-card">
             <div className="profile-photo-placeholder">S</div>
             <div className="profile-name">Stacey Fronek</div>
-            <div className="profile-vision">A future where technological progress is deliberately aligned with human efficiency and equity</div>
+            <div className="profile-vision">Following her passions and co-creating communities around them — building things that make civilization a more human-friendly system.</div>
             <div className="profile-valued"><strong>Valued for</strong> — Thorough, high-quality feedback and a drive to use the program to its fullest — motivating the whole group</div>
             <div className="profile-quest"><strong>Current quest</strong> — Refining product positioning and brand strategy through rapid peer feedback cycles</div>
             <div className="profile-skills">
@@ -77,7 +77,7 @@ export default function Home() {
           <div className="profile-card">
             <div className="profile-photo-placeholder">J</div>
             <div className="profile-name">Jordi Pinyana</div>
-            <div className="profile-vision">A future where technological progress is aligned with human efficiency and equity</div>
+            <div className="profile-vision">A future of individual and collective freedom — where people have agency to decide what matters to them, work together without barriers, and live connected to nature.</div>
             <div className="profile-valued"><strong>Valued for</strong> — Sharp governance thinking and consistent participation that shaped the group's direction</div>
             <div className="profile-quest"><strong>Current quest</strong> — Building digital voting and governance solutions for decentralized communities</div>
             <div className="profile-skills">
@@ -119,7 +119,7 @@ export default function Home() {
           <div className="profile-card">
             <div className="profile-photo-placeholder">A</div>
             <div className="profile-name">Anna Zhu</div>
-            <div className="profile-vision">A future where technological progress is deliberately aligned with human efficiency and equity</div>
+            <div className="profile-vision">A future where basic needs are universally covered and people are free to work purely from self-actualization and creative freedom.</div>
             <div className="profile-valued"><strong>Valued for</strong> — Executive energy, inspiring ideas, and showing what long-term development through Sanctuary looks like</div>
             <div className="profile-quest"><strong>Current quest</strong> — Using neuroscience to match you with people you truly vibe with</div>
             <div className="profile-skills">
