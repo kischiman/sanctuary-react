@@ -116,6 +116,15 @@
   margin-bottom: 0.75rem;
 }
 
+.profile-photo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin-bottom: 0.75rem;
+}
+
 .profile-name {
   font-family: 'Source Serif 4', Georgia, serif;
   font-size: 0.95rem;
@@ -241,6 +250,10 @@
     height: 400px;
     flex-shrink: 0;
     scroll-snap-align: center;
+  }
+
+  .profile-card:first-child {
+    scroll-snap-align: start;
   }
 
   .profile-card:hover {

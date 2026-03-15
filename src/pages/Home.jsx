@@ -3,6 +3,14 @@ import FadeIn from '../components/FadeIn'
 import '../styles/profile-cards.css'
 import { useState } from 'react'
 
+// Import face images
+import justinaFace from '../assets/faces/justina.webp'
+import staceyFace from '../assets/faces/stacey.webp'
+import jordiFace from '../assets/faces/jordi.webp'
+import mattFace from '../assets/faces/matt.webp'
+import dayvanFace from '../assets/faces/dayvan.webp'
+import annaFace from '../assets/faces/Anna-Square.webp'
+
 export default function Home() {
   const [activeTooltip, setActiveTooltip] = useState(null)
 
@@ -47,7 +55,7 @@ export default function Home() {
 
           {/* Justina */}
           <div className="profile-card">
-            <div className="profile-photo-placeholder">J</div>
+            <img src={justinaFace} alt="Justina Švitraitė" className="profile-photo" />
             <div className="profile-name">Justina Švitraitė</div>
             <div className="profile-vision">Facilitating a mobile network of cosmo-local communities blending technology and nature</div>
             <div className="profile-valued"><strong>Valued for</strong> — Emotional support and creative collaboration — unblocking projects and keeping the group grounded</div>
@@ -61,7 +69,7 @@ export default function Home() {
 
           {/* Stacey */}
           <div className="profile-card">
-            <div className="profile-photo-placeholder">S</div>
+            <img src={staceyFace} alt="Stacey Fronek" className="profile-photo" />
             <div className="profile-name">Stacey Fronek</div>
             <div className="profile-vision">Following her passions and co-creating communities around them — building things that make civilization a more human-friendly system.</div>
             <div className="profile-valued"><strong>Valued for</strong> — Thorough, high-quality feedback and a drive to use the program to its fullest — motivating the whole group</div>
@@ -75,7 +83,7 @@ export default function Home() {
 
           {/* Jordi */}
           <div className="profile-card">
-            <div className="profile-photo-placeholder">J</div>
+            <img src={jordiFace} alt="Jordi Pinyana" className="profile-photo" />
             <div className="profile-name">Jordi Pinyana</div>
             <div className="profile-vision">A future of individual and collective freedom — where people have agency to decide what matters to them, work together without barriers, and live connected to nature.</div>
             <div className="profile-valued"><strong>Valued for</strong> — Sharp governance thinking and consistent participation that shaped the group's direction</div>
@@ -89,7 +97,7 @@ export default function Home() {
 
           {/* Matt */}
           <div className="profile-card">
-            <div className="profile-photo-placeholder">M</div>
+            <img src={mattFace} alt="Matt Shams" className="profile-photo" />
             <div className="profile-name">Matt Shams</div>
             <div className="profile-vision">Designing containers where longevity research and innovation can be replicated at scale</div>
             <div className="profile-valued"><strong>Valued for</strong> — Critical thinking, first-principles feedback, and shaping Sanctuary's economic model with directness</div>
@@ -103,7 +111,7 @@ export default function Home() {
 
           {/* Dayvan */}
           <div className="profile-card">
-            <div className="profile-photo-placeholder">D</div>
+            <img src={dayvanFace} alt="Dayvan" className="profile-photo" />
             <div className="profile-name">Dayvan</div>
             <div className="profile-vision">A world where self-awareness and presence shape the technology we build, not the other way around</div>
             <div className="profile-valued"><strong>Valued for</strong> — Narrative craft, deep synthesis, and holding space for meaning-making through creative workshops</div>
@@ -117,7 +125,7 @@ export default function Home() {
 
           {/* Anna */}
           <div className="profile-card">
-            <div className="profile-photo-placeholder">A</div>
+            <img src={annaFace} alt="Anna Zhu" className="profile-photo" />
             <div className="profile-name">Anna Zhu</div>
             <div className="profile-vision">A future where basic needs are universally covered and people are free to work purely from self-actualization and creative freedom.</div>
             <div className="profile-valued"><strong>Valued for</strong> — Executive energy, inspiring ideas, and showing what long-term development through Sanctuary looks like</div>
@@ -151,7 +159,7 @@ export default function Home() {
           <div className="content">
             <h2>A magical co-living container to experiment with how we live and work together</h2>
             <p>
-              Sanctuary isn't just a co-living residency — it's an ongoing experiment in how environment, rituals, adnd digital tools can accelerate what we can create. A carefully curated group of 5-10, co-living that feels like home within hours, shared meals, adventurous trips, and a health-first culture.
+              Sanctuary has a rolling residency — an ongoing research lab for how environment, rituals, adnd digital tools can accelerate what we can build. A carefully curated group of 5-10, co-living that feels like home within hours, shared meals, adventurous trips, and a health-first culture.
             </p>
             <img src="/sanctuary-react/co-living-sunset.jpg" alt="Modern co-living space with large windows showing people working together inside, surrounded by mountains at sunset" style={{ width: '100%', borderRadius: '8px', margin: '2rem 0' }} />
             <p>
@@ -172,10 +180,12 @@ export default function Home() {
             <p>
               Our members bring a project and a set of open questions. Through structured, online feedback sessions, IRL events, and peer accountability, you move through the blockers that have been sitting in your queue for months and always leave with clear next steps.
             </p>
+            <img src="/sanctuary-react/mobile-apps.jpg" alt="Mobile applications showcasing different interfaces and features" style={{ width: '100%', maxWidth: '600px', borderRadius: '8px', margin: '2rem 0' }} />
             <Link to="/membership" className="section-link">Explore the projects →</Link>
           </div>
         </FadeIn>
       </section>
+
 
       {/* RESEARCH PUBLICATION */}
       <section className="section-wrap" id="research-publication">
