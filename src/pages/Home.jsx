@@ -151,13 +151,13 @@ export default function Home() {
         <FadeIn className="two-col">
           <div className="sidebar-label">02 — Container</div>
           <div className="content">
-            <h2>A magical co-living container to experiment with how we live and work together</h2>
+            <h2>A magical co-living container to experiment with how we work and live together</h2>
             <p>
-              Sanctuary has a rolling residency — an ongoing innovation lab for how environment, rituals, adnd tools can accelerate what we can build. A carefully curated group of 5-10, co-living that feels like home within hours, shared meals, adventurous trips, and a health-first culture.
+              Sanctuary has a rolling residency — an ongoing innovation lab for how environment, rituals, and tools can accelerate what we can build. A carefully curated group of 5-10, co-living that feels like home within hours. With shared meals, adventurous trips, and a health-first culture.
             </p>
             <img src="/sanctuary-react/co-living-sunset.jpg" alt="Modern co-living space with large windows showing people working together inside, surrounded by mountains at sunset" style={{ width: '100%', borderRadius: '8px', margin: '2rem 0' }} />
             <p>
-              Each chapter is co-created by the community. We test coordination tools, reflect on what works, and treat the residency itself as a design object. If you're drawn to unconventional ways of exploring and creating, you'll feel it here.
+              Each chapter is co-created by the community. We test coordination tools, reflect on what works, and treat the residency itself as a design object. If you're drawn to unconventional ways of living, you'll feel it here.
             </p>
             <Link to="/membership" className="section-link">Learn more →</Link>
           </div>
@@ -172,7 +172,7 @@ export default function Home() {
           <div className="content">
             <h2>Accountability beyond the residency</h2>
             <p>
-              Our members bring a project and a set of open questions. Through structured, online feedback sessions, IRL events, and peer accountability, you move through the blockers that have been sitting in your queue for months and always leave with clear next steps.
+              Our members bring a project and a set of open questions. Through structured online sessions, IRL events, and peer accountability, you move through the blockers that have been sitting in your queue for months and always leave with clear next steps.
             </p>
             <img src="/sanctuary-react/mobile-apps.jpg" alt="Mobile applications showcasing different interfaces and features" style={{ width: '100%', maxWidth: '600px', borderRadius: '8px', margin: '2rem 0' }} />
             <Link to="/membership" className="section-link">Explore the projects →</Link>
