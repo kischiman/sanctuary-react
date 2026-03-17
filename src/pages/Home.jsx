@@ -23,7 +23,7 @@ export default function Home() {
           You're creating socio-technical infrastructure. Let's accelerate and make it last.
         </h1>
         <p className="hero-subtitle">
-          A cosmo-local research incubator for builders solving real problems with simple products and a clear path to revenue.
+        A cosmo-local incubator for builders solving real problems — with a path to revenue.
         </p>
       </div>
 
