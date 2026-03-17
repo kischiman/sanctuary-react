@@ -2,35 +2,23 @@
    SANCTUARY PROFILE CARDS — CSS STYLES
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
 
 :root {
-  /* Backgrounds */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F5F5F5;
-  --bg-card: #FFFFFF;
-
-  /* Text */
-  --text-primary: #111111;
-  --text-secondary: #555555;
-  --text-tertiary: #888888;
-
-  /* Accent — electric blue, used sparingly */
-  --accent: #0066FF;
-  --accent-light: rgba(0, 102, 255, 0.08);
-  --accent-muted: rgba(0, 102, 255, 0.5);
-
-  /* Borders and rules */
-  --border: #E5E5E5;
-  --border-strong: #CCCCCC;
+  --cream:  #ffffff;
+  --dark:   #1a1a1a;
+  --mid:    rgba(26, 26, 26, 0.45);
+  --faint:  rgba(26, 26, 26, 0.09);
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'DM Sans', sans-serif;
+  --pad:    56px;
+  --pad-l:  80px;
 }
 
 /* --- SECTION WRAPPER --- */
 .profiles {
-  padding: 1rem 0 8rem;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-primary);
+  padding: 80px 0;
+  background: var(--cream);
   overflow: hidden;
 }
 
@@ -64,8 +52,8 @@
   position: absolute;
   width: 240px;
   height: 400px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: var(--cream);
+  border: 1px solid var(--faint);
   border-radius: 4px;
   padding: 1.5rem 1.25rem 1.25rem;
   display: flex;
@@ -75,7 +63,7 @@
   transform-origin: bottom center;
   transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
   cursor: default;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px rgba(26, 26, 26, 0.04);
 }
 
 /* Hover: lift out of fan */
@@ -99,8 +87,8 @@
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: var(--text-primary);
-  color: var(--bg-primary);
+  background: var(--dark);
+  color: var(--cream);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,17 +112,18 @@
 .profile-name {
   font-family: var(--sans);
   font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-weight: 500;
+  color: var(--dark);
   margin-bottom: 0.25rem;
   line-height: 1.3;
 }
 
 .profile-vision {
-  font-family: var(--sans);
-  font-weight: 400;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
   font-size: 0.72rem;
-  color: var(--accent);
+  color: var(--mid);
   line-height: 1.45;
   margin-bottom: 0.65rem;
 }
@@ -143,36 +132,36 @@
   font-family: var(--sans);
   font-size: 0.62rem;
   font-weight: 400;
-  color: var(--text-secondary);
+  color: var(--mid);
   line-height: 1.55;
   margin-bottom: 0.45rem;
 }
 
 .profile-valued strong {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 0.5rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-tertiary);
+  color: var(--mid);
 }
 
 .profile-quest {
   font-family: var(--sans);
   font-size: 0.62rem;
   font-weight: 400;
-  color: var(--text-secondary);
+  color: var(--mid);
   line-height: 1.55;
   margin-bottom: 0.55rem;
 }
 
 .profile-quest strong {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 0.5rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-tertiary);
+  color: var(--mid);
 }
 
 .profile-skills {
@@ -184,36 +173,36 @@
 }
 
 .profile-skill-tag {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 0.45rem;
-  font-weight: 300;
+  font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--text-tertiary);
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
+  color: var(--mid);
+  background: rgba(26, 26, 26, 0.05);
+  border: 1px solid var(--faint);
   padding: 0.15rem 0.4rem;
   line-height: 1.3;
 }
 
 /* --- CTA CARD VARIANT --- */
 .profile-card--cta {
-  border: 1px dashed var(--border-strong);
-  background: var(--bg-card);
+  border: 1px dashed rgba(26, 26, 26, 0.22);
+  background: var(--cream);
 }
 
 .profile-card--cta .profile-photo-placeholder {
-  background: var(--accent);
-  opacity: 1;
+  background: var(--dark);
+  opacity: 0.7;
 }
 
 .profile-card--cta .profile-name {
-  color: var(--accent);
+  color: var(--dark);
 }
 
 .profile-card--cta .profile-skill-tag {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--dark);
+  color: var(--dark);
   background: transparent;
 }
 

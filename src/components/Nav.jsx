@@ -6,7 +6,9 @@ export default function Nav() {
   return (
     <nav>
       <div className="nav-container">
-        <Link to="/" className="nav-wordmark">Sanctuary</Link>
+        <Link to="/" className="nav-wordmark">
+          <img src="/sanctuary-react/logo.svg" alt="Sanctuary" />
+        </Link>
         <ul className="nav-links">
           <li><a href="https://deepworkstudio.substack.com/">Publication</a></li>
           <li><a href="https://www.notion.so/deepworkstudio/SanctuaryOS-3084f7ca9987809485d5da8f68e203b2?source=copy_link" target="_blank" rel="noopener noreferrer">Container</a></li>
