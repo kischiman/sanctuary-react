@@ -132,16 +132,21 @@ export default function Home() {
           </div>
 
           {/* Open invitation */}
-          <div className="profile-card profile-card--cta">
+          <Link 
+            to="/membership" 
+            className="profile-card profile-card--cta" 
+            style={{ textDecoration: 'none', color: 'inherit' }}
+            onClick={() => window.scrollTo(0, 0)}
+          >
             <div className="profile-photo-placeholder">?</div>
             <div className="profile-name">This could be you</div>
             <div className="profile-vision">What future are you working toward?</div>
             <div className="profile-valued"><strong>Valued for</strong> — What your peers would say you bring to a room</div>
             <div className="profile-quest"><strong>Current quest</strong> — The thing you're building or figuring out right now</div>
             <div className="profile-skills">
-              <span className="profile-skill-tag">Apply for the next edition →</span>
+              <span className="profile-skill-tag">Learn more</span>
             </div>
-          </div>
+          </Link>
 
         </div>
       </section>
@@ -195,7 +200,7 @@ export default function Home() {
                   <a href="https://compassionate-provide-875982.framer.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Moxa</a>
                 </li>
                 <li style={{ fontStyle: 'italic', color: 'var(--mid)' }}>
-                  Full database coming soon...
+                  And more...
                 </li>
               </ul>
             </div>
