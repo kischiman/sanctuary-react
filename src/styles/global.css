@@ -103,7 +103,7 @@ nav .nav-container {
 .hero {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 120px var(--pad-l) 80px;
+  padding: 120px var(--pad-l) 40px;
   margin-top: 80px;
 }
 

@@ -9,7 +9,7 @@ export default function Membership() {
         <div className="breadcrumb">Membership — By Invitation</div>
         <h1>Join the Sanctuary network</h1>
         <p className="subtitle">
-        Stop burning your remaining runway on constant pivots. Faster feedback and development cycles. More users on your product. A sustainable way of working.
+        Stop burning your remaining runway on endless pivots. Faster feedback and development cycles. More users on your product. A sustainable way of working.
         </p>
       </div>
 
@@ -41,7 +41,7 @@ export default function Membership() {
       <div className="pricing-section">
         <h2>Participation Options</h2>
         <p style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 2rem 1.5rem', color: 'var(--text-secondary)' }}>
-          All financial contributions are added to a common pool. All members decide how the resources are allocated. Your first month subscription gets your money back if you're not satisfied.
+          All financial contributions are added to a common pool. Members decide how the resources are allocated. Your first month subscription gets your money back if you're not satisfied.
         </p>
       </div>
 
@@ -56,10 +56,10 @@ export default function Membership() {
             <ul className="tier-features">
               <li>Async updates from group sessions</li>
               <li>1:1 expert sessions available as add-ons</li>
-              <li>Research publication archive</li>
+              <li>Blueprint and case study archive</li>
             </ul>
             <div className="tier-cta">
-              <a href="#" className="btn-tier btn-tier--outline">Subscribe →</a>
+              <a href="https://t.me/+09A051ccP5EzNzky" target="_blank" rel="noopener noreferrer" className="btn-tier btn-tier--outline">Join our Telegram Group →</a>
             </div>
           </div>
 
@@ -76,7 +76,7 @@ export default function Membership() {
               <li>Priority access to curated Sanctuary residencies</li>
               <li>Residency credit to reduce nightly rate</li>
               <li>Documentation on your progress</li>
-              <li>Research publication and summary</li>
+              <li>Get featured in blueprints and case studies</li>
             </ul>
             <div className="tier-cta">
               <a href="#" className="btn-tier btn-tier--filled">Share your details →</a>
@@ -95,7 +95,7 @@ export default function Membership() {
               <li>1:1 strategy sessions with community experts</li>
               <li>Access to curated Sanctuary residencies</li>
               <li>Documentation on your progress</li>
-              <li>Research publication and summary</li>
+              <li>Get featured in blueprints and case studies</li>
             </ul>
             <div className="tier-cta">
               <a href="#" className="btn-tier btn-tier--outline">Share your details →</a>

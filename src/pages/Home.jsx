@@ -175,8 +175,31 @@ export default function Home() {
               Our members bring a project and a set of open questions. Through structured online sessions, IRL events, and peer accountability, you move through the blockers that have been sitting in your queue for months and always leave with clear next steps.
             </p>
             <img src="/sanctuary-react/mobile-apps.jpg" alt="Mobile applications showcasing different interfaces and features" style={{ width: '100%', maxWidth: '600px', borderRadius: '8px', margin: '2rem 0' }} />
-            <Link to="/membership" className="section-link">Explore the projects →</Link>
-          </div>
+            
+            <div style={{ marginBottom: '2rem' }}>
+              <p style={{ fontFamily: 'var(--sans)', fontSize: '12px', fontWeight: '500', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '1rem' }}>Our featured projects:</p>
+              <ul style={{ listStyle: 'none', padding: '0', fontSize: '14px', lineHeight: '1.9', color: 'var(--mid)' }}>
+                <li style={{ marginBottom: '0.5rem' }}>
+                  <a href="https://usecompass.app" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Compass</a>
+                </li>
+                <li style={{ marginBottom: '0.5rem' }}>
+                  <a href="https://m8.life" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>M8</a>
+                </li>
+                <li style={{ marginBottom: '0.5rem' }}>
+                  <a href="https://synchro-social.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Synchro</a>
+                </li>
+                <li style={{ marginBottom: '0.5rem' }}>
+                  <a href="https://theduoapp.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Duo</a>
+                </li>
+                <li style={{ marginBottom: '0.5rem' }}>
+                  <a href="https://compassionate-provide-875982.framer.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Moxa</a>
+                </li>
+                <li style={{ fontStyle: 'italic', color: 'var(--mid)' }}>
+                  Full database coming soon...
+                </li>
+              </ul>
+            </div>
+           </div>
         </FadeIn>
       </section>
 
@@ -187,11 +210,11 @@ export default function Home() {
         <FadeIn className="two-col">
           <div className="sidebar-label">04 — Research</div>
           <div className="content">
-            <h2>Learn from our research publication</h2>
+            <h2>Learn from our case studies and blueprints</h2>
             <p>
-              How might AI and web3 technology be used to improve our social fabric? Dig deep into projects and hypotheses that fuel our curiosity. Monthly updates with deep-dives on what we've learned, how it works, and how to get involved.
+              How might AI and web3 technology be used to improve our social fabric? Dig deep into the projects and hypotheses that fuel our curiosity. Deep-dives on what we've learned, how it works, and how to do it yourself.
             </p>
-            <Link to="/membership" className="section-link">Subscribe to our Research Reports →</Link>
+            <Link to="/membership" className="section-link">Subscribe to our publication →</Link>
           </div>
         </FadeIn>
       </section>
