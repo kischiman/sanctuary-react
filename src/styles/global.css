@@ -90,13 +90,55 @@ nav .nav-container {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 12px 24px;
-  border-radius: 100px;
+  border-radius: 0;
   transition: background 0.25s, color 0.25s;
   text-decoration: none;
 }
 .nav-cta:hover { 
   background: var(--dark); 
   color: var(--cream) !important; 
+}
+
+/* Hide hamburger on desktop */
+.hamburger-btn { display: none; }
+
+/* Scroll Arrows */
+.scroll-arrows {
+  display: none;
+}
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--cream);
+  border: 1px solid var(--faint);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--dark);
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-arrow:hover {
+  background: var(--dark);
+  color: var(--cream);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-arrow-left {
+  left: 16px;
+}
+
+.scroll-arrow-right {
+  right: 16px;
 }
 
 /* ─── HERO ─────────────────────────────────────── */
@@ -148,6 +190,12 @@ nav .nav-container {
   grid-template-columns: 280px 1fr;
   gap: 3rem;
   padding: 0;
+}
+
+/* Add breathing room between hr and section headers */
+hr + .two-col,
+hr + * .two-col {
+  margin-top: 3rem;
 }
 .two-col .sidebar-label {
   font-family: var(--sans);
@@ -613,4 +661,85 @@ footer.site-footer span {
     padding: 1.25rem 0 !important;
   }
   .process-step:last-child { border-bottom: none; }
+  
+  /* Mobile horizontal scroll for membership cards */
+  .membership-cards-container {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    display: flex !important;
+    gap: 1rem !important;
+    padding: 1rem !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .membership-cards-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .membership-card-mobile {
+    min-width: 280px !important;
+    flex-shrink: 0 !important;
+    scroll-snap-align: center;
+  }
+  
+  .membership-card-mobile:first-child {
+    scroll-snap-align: start;
+  }
+  
+  /* Mobile Navigation */
+  .hamburger-btn {
+    display: flex !important;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .hamburger-btn span {
+    width: 20px;
+    height: 2px;
+    background: var(--dark);
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links {
+    position: fixed !important;
+    top: 80px !important;
+    right: -100% !important;
+    width: 100% !important;
+    height: calc(100vh - 80px) !important;
+    background: var(--cream) !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    padding: 2rem 0 2rem 2rem !important;
+    gap: 1rem !important;
+    transition: right 0.3s ease !important;
+    border-top: 1px solid var(--faint);
+  }
+  
+  .nav-links-open {
+    right: 0 !important;
+  }
+  
+  .nav-links li {
+    width: auto;
+    text-align: left;
+  }
+  
+  .nav-links a {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+  }
+  
+  /* Show scroll arrows on mobile for horizontal scrolling */
+  .scroll-arrows {
+    display: block !important;
+  }
 }

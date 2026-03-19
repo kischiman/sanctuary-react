@@ -207,7 +207,7 @@
 }
 
 /* --- RESPONSIVE: horizontal scroll on mobile --- */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .card-fan {
     height: auto;
     flex-direction: row;

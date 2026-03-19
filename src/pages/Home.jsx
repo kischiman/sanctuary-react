@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
 import FadeIn from '../components/FadeIn'
 import '../styles/profile-cards.css'
 
@@ -11,6 +12,26 @@ import dayvanFace from '../assets/faces/dayvan.webp'
 import annaFace from '../assets/faces/Anna-Square.webp'
 
 export default function Home() {
+  const cardFanRef = useRef(null)
+
+  useEffect(() => {
+    // Set initial scroll position to show Matt's card (4th card, index 3) on mobile
+    const setInitialScroll = () => {
+      if (cardFanRef.current && window.innerWidth <= 1024) {
+        const mattCard = cardFanRef.current.children[3] // Matt is the 4th card
+        if (mattCard) {
+          mattCard.scrollIntoView({ behavior: 'smooth', inline: 'center' })
+        }
+      }
+    }
+
+    // Set initial position after a small delay to ensure cards are rendered
+    setTimeout(setInitialScroll, 100)
+
+    // Also set on resize
+    window.addEventListener('resize', setInitialScroll)
+    return () => window.removeEventListener('resize', setInitialScroll)
+  }, [])
 
   return (
     <>
@@ -45,7 +66,7 @@ export default function Home() {
 
       {/* COMMUNITY PROFILES */}
       <section className="profiles" style={{ borderTop: 'none' }}>
-        <div className="card-fan">
+        <div className="card-fan" ref={cardFanRef}>
 
           {/* Justina */}
           <div className="profile-card">
@@ -153,6 +174,7 @@ export default function Home() {
 
       {/* RESEARCH LAB */}
       <section className="section-wrap" id="research-lab" style={{ position: 'relative', zIndex: 1 }}>
+        <hr className="rule" />
         <FadeIn className="two-col">
           <div className="sidebar-label">02 — Container</div>
           <div className="content">
