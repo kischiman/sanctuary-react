@@ -1,5 +1,5 @@
 import FadeIn from '../components/FadeIn'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 function ReservationForm({ tierName }) {
   const [email, setEmail] = useState('')
@@ -123,7 +123,35 @@ function ReservationForm({ tierName }) {
   )
 }
 
+function ScrollArrows({ containerRef }) {
+  const scrollLeft = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({ left: -300, behavior: 'smooth' })
+    }
+  }
+
+  const scrollRight = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({ left: 300, behavior: 'smooth' })
+    }
+  }
+
+  return (
+    <div className="scroll-arrows">
+      <button className="scroll-arrow scroll-arrow-left" onClick={scrollLeft} aria-label="Scroll left">
+        ←
+      </button>
+      <button className="scroll-arrow scroll-arrow-right" onClick={scrollRight} aria-label="Scroll right">
+        →
+      </button>
+    </div>
+  )
+}
+
 export default function Membership() {
+  const membershipScrollRef = useRef(null)
+  const sessionsScrollRef = useRef(null)
+
   return (
     <>
       {/* HEADER */}
@@ -136,29 +164,6 @@ export default function Membership() {
         </p>
       </div>
 
-      {/* APPLICATION PROCESS */}
-      <FadeIn className="process-section">
-        <hr style={{ border: 'none', borderTop: '1px solid var(--rule)', marginBottom: '2rem' }} />
-        <h2>Application Process</h2>
-        <p style={{ marginBottom: '2rem', color: 'var(--text-secondary)' }}>You're building a product you believe in and want to surround yourself with others doing the same. Sanctuary is not open enrollment. Every member is personally vetted by our community for cultural fit, complementary skills, and alignment with the group's shared vision.</p>
-        <div className="process-steps">
-          <div className="process-step">
-            <div className="step-num">01</div>
-            <h3>Inquiry</h3>
-            <p>Submit your project and background.</p>
-          </div>
-          <div className="process-step">
-            <div className="step-num">02</div>
-            <h3>Interview</h3>
-            <p>A 20-minute jam session to check cultural fit.</p>
-          </div>
-          <div className="process-step">
-            <div className="step-num">03</div>
-            <h3>Initiation</h3>
-            <p>Join your first weekly cohort and enter the lab.</p>
-          </div>
-        </div>
-      </FadeIn>
 
       {/* PRICING */}
       <div className="pricing-section">
@@ -168,15 +173,20 @@ export default function Membership() {
         </p>
       </div>
 
-      <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 2rem 3rem' }}>
-        <FadeIn className="pricing-grid">
+      <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 var(--pad-l) 3rem', position: 'relative' }}>
+        <ScrollArrows containerRef={membershipScrollRef} />
+        <div 
+          ref={membershipScrollRef}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', alignItems: 'stretch' }} 
+          className="membership-cards-container"
+        >
           {/* Explorer */}
-          <div className="tier">
+          <div style={{ border: '1px solid var(--faint)', borderRadius: '4px', padding: '24px 20px', background: 'var(--cream)', display: 'flex', flexDirection: 'column' }} className="membership-card-mobile">
             <div className="tier-name">Explorer</div>
             <div className="tier-price">$0</div>
             <div className="tier-period">Per month</div>
             <div className="tier-promo" style={{ visibility: 'hidden' }}>—</div>
-            <ul className="tier-features">
+            <ul style={{ listStyle: 'disc', paddingLeft: '18px', fontSize: '13px', lineHeight: '1.7', color: 'var(--mid)', marginBottom: '20px', flex: 1 }}>
               <li>Community access</li>
               <li>Async updates from group sessions</li>
               <li>Recordings and session summaries</li>
@@ -190,12 +200,12 @@ export default function Membership() {
           </div>
 
           {/* Lifestyle */}
-          <div className="tier featured">
+          <div style={{ border: '1px solid var(--faint)', borderRadius: '4px', padding: '24px 20px', background: 'var(--cream)', display: 'flex', flexDirection: 'column' }} className="membership-card-mobile">
             <div className="tier-name">Resident</div>
             <div className="tier-price"><span className="original">$2,490</span>Free</div>
             <div className="tier-period">Per year</div>
             <div className="tier-promo">Limited-time offer only in April</div>
-            <ul className="tier-features">
+            <ul style={{ listStyle: 'disc', paddingLeft: '18px', fontSize: '13px', lineHeight: '1.7', color: 'var(--mid)', marginBottom: '20px', flex: 1 }}>
               <li>Structured expert advice on product, growth, and strategy</li>
               <li>Weekly facilitated product feedback sessions</li>
               <li>1:1 strategy sessions with community experts</li>
@@ -211,12 +221,12 @@ export default function Membership() {
           </div>
 
           {/* Builder */}
-          <div className="tier">
+          <div style={{ border: '1px solid var(--faint)', borderRadius: '4px', padding: '24px 20px', background: 'var(--cream)', display: 'flex', flexDirection: 'column' }} className="membership-card-mobile">
             <div className="tier-name">Member</div>
             <div className="tier-price"><span className="original">$249</span>Free</div>
             <div className="tier-period">Per month</div>
             <div className="tier-promo">Limited-time offer only in April</div>
-            <ul className="tier-features">
+            <ul style={{ listStyle: 'disc', paddingLeft: '18px', fontSize: '13px', lineHeight: '1.7', color: 'var(--mid)', marginBottom: '20px', flex: 1 }}>
             <li>Structured expert advice on product, growth, and strategy</li>
               <li>Weekly facilitated product feedback sessions</li>
               <li>1:1 strategy sessions with community experts</li>
@@ -229,19 +239,26 @@ export default function Membership() {
               <ReservationForm tierName="Member" />
             </div>
           </div>
-        </FadeIn>
+        </div>
       </div>
 
       {/* TRY INDIVIDUAL SESSIONS */}
-      <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '80px var(--pad-l) 0' }}>
+      <div className="pricing-section" style={{ paddingTop: '80px' }}>
         <h2>Try individual sessions</h2>
         <p style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 0 48px', color: 'var(--text-secondary)' }}>
           Participate actively in our online sessions to get to know us, spotlight your project, and learn with us.
         </p>
-        
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', alignItems: 'stretch' }}>
+      </div>
+      
+      <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 var(--pad-l) 0', position: 'relative' }}>
+        <ScrollArrows containerRef={sessionsScrollRef} />
+        <div 
+          ref={sessionsScrollRef}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', alignItems: 'stretch' }} 
+          className="membership-cards-container"
+        >
           {/* Hot Takes */}
-          <div style={{ border: '1px solid var(--faint)', borderRadius: '4px', padding: '24px 20px', background: 'var(--cream)', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ border: '1px solid var(--faint)', borderRadius: '4px', padding: '24px 20px', background: 'var(--cream)', display: 'flex', flexDirection: 'column' }} className="membership-card-mobile">
             <h3 style={{ fontFamily: 'var(--sans)', fontSize: '16px', fontWeight: '500', color: 'var(--dark)', marginBottom: '6px' }}>Hot Takes</h3>
             <div style={{ fontSize: '20px', fontWeight: '500', color: 'var(--dark)', marginBottom: '12px' }}>$99</div>
             <ul style={{ listStyle: 'disc', paddingLeft: '18px', fontSize: '13px', lineHeight: '1.7', color: 'var(--mid)', marginBottom: '20px', flex: 1 }}>
@@ -254,7 +271,7 @@ export default function Membership() {
           </div>
 
           {/* Peer Support */}
-          <div style={{ border: '1px solid var(--faint)', borderRadius: '4px', padding: '24px 20px', background: 'var(--cream)', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ border: '1px solid var(--faint)', borderRadius: '4px', padding: '24px 20px', background: 'var(--cream)', display: 'flex', flexDirection: 'column' }} className="membership-card-mobile">
             <h3 style={{ fontFamily: 'var(--sans)', fontSize: '16px', fontWeight: '500', color: 'var(--dark)', marginBottom: '6px' }}>Peer Support</h3>
             <div style={{ fontSize: '20px', fontWeight: '500', color: 'var(--dark)', marginBottom: '12px' }}>$99</div>
             <ul style={{ listStyle: 'disc', paddingLeft: '18px', fontSize: '13px', lineHeight: '1.7', color: 'var(--mid)', marginBottom: '20px', flex: 1 }}>
@@ -267,7 +284,7 @@ export default function Membership() {
           </div>
 
           {/* Playtest */}
-          <div style={{ border: '1px solid var(--faint)', borderRadius: '4px', padding: '24px 20px', background: 'var(--cream)', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ border: '1px solid var(--faint)', borderRadius: '4px', padding: '24px 20px', background: 'var(--cream)', display: 'flex', flexDirection: 'column' }} className="membership-card-mobile">
             <h3 style={{ fontFamily: 'var(--sans)', fontSize: '16px', fontWeight: '500', color: 'var(--dark)', marginBottom: '6px' }}>Playtest</h3>
             <div style={{ fontSize: '20px', fontWeight: '500', color: 'var(--dark)', marginBottom: '12px' }}>$99</div>
             <ul style={{ listStyle: 'disc', paddingLeft: '18px', fontSize: '13px', lineHeight: '1.7', color: 'var(--mid)', marginBottom: '20px', flex: 1 }}>
