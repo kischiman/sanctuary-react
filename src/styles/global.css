@@ -102,6 +102,12 @@ nav .nav-container {
 /* Hide hamburger on desktop */
 .hamburger-btn { display: none; }
 
+/* Hide mobile CTA on desktop */
+.nav-cta-mobile { display: none; }
+
+/* Show desktop-only items */
+.desktop-only { display: block; }
+
 /* Scroll Arrows */
 .scroll-arrows {
   display: none;
@@ -736,6 +742,17 @@ footer.site-footer span {
     display: block;
     padding: 0.75rem 0;
     font-size: 1rem;
+  }
+  
+  /* Show mobile CTA, hide desktop-only items */
+  .nav-cta-mobile {
+    display: inline-block !important;
+    font-size: 10px;
+    padding: 8px 16px;
+  }
+  
+  .desktop-only {
+    display: none !important;
   }
   
   /* Show scroll arrows on mobile for horizontal scrolling */

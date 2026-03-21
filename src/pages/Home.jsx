@@ -58,7 +58,7 @@ export default function Home() {
             <p>
             Our high-signal, low-noise collective combines the emotional safety of a close-knit collective with the strategic opportunities of a professional network.  
             </p>
-            <Link to="/membership" className="section-link">Join the Sanctuary network →</Link>
+            <Link to="/join" className="section-link">Join the Sanctuary network →</Link>
 
           </div>
         </FadeIn>
@@ -154,7 +154,7 @@ export default function Home() {
 
           {/* Open invitation */}
           <Link 
-            to="/membership" 
+            to="/join" 
             className="profile-card profile-card--cta" 
             style={{ textDecoration: 'none', color: 'inherit' }}
             onClick={() => window.scrollTo(0, 0)}

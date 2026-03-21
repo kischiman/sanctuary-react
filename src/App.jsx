@@ -3,6 +3,7 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Membership from './pages/Membership'
+import Join from './pages/Join'
 
 export default function App() {
   try {
@@ -12,6 +13,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/membership" element={<Membership />} />
+          <Route path="/join" element={<Join />} />
         </Routes>
         <Footer />
       </>
