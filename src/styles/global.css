@@ -244,19 +244,41 @@ hr + * .two-col {
 /* ─── QUOTES ───────────────────────────────────── */
 .quotes-row {
   display: grid;
-  gap: 2rem;
-  padding: 2rem 0 3rem;
+  gap: 3rem;
+  padding: 3rem 0 4rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
-.quotes-row.two { grid-template-columns: 1fr 1fr; }
-.quotes-row.three { grid-template-columns: 1fr 1fr 1fr; }
+.quotes-row.two { 
+  grid-template-columns: 1fr 1fr; 
+  align-items: start;
+}
+.quotes-row.three { 
+  grid-template-columns: 1fr 1fr 1fr; 
+  align-items: start;
+}
 blockquote {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 0.95rem;
-  color: var(--ink-light);
-  line-height: 1.65;
-  padding-left: 1.25rem;
-  border-left: 2px solid var(--accent);
+  font-size: 1.1rem;
+  color: var(--dark);
+  line-height: 1.6;
+  padding: 1.5rem 0 1.5rem 2rem;
+  border-left: 3px solid var(--dark);
+  margin: 0;
+  position: relative;
+  background: rgba(26, 26, 26, 0.02);
+  border-radius: 0 4px 4px 0;
+}
+blockquote::before {
+  content: '"';
+  font-family: var(--serif);
+  font-size: 3rem;
+  color: var(--mid);
+  position: absolute;
+  left: 0.5rem;
+  top: -0.5rem;
+  line-height: 1;
 }
 
 /* ─── RESIDENCY CARD ───────────────────────────── */

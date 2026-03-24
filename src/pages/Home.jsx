@@ -178,7 +178,7 @@ export default function Home() {
         <FadeIn className="two-col">
           <div className="sidebar-label">02 — Container</div>
           <div className="content">
-            <h2>A magical co-living container to experiment with how we work and live together</h2>
+            <h2>A co-living container to experiment with how we work and live together</h2>
             <p>
               Sanctuary has a rolling residency — an ongoing innovation lab for how environment, rituals, and tools can accelerate what we can build. A carefully curated group of 5-10, co-living that feels like home within hours. With shared meals, adventurous trips, and a health-first culture.
             </p>

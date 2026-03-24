@@ -30,7 +30,7 @@ export default function Nav() {
         
         <ul className={`nav-links ${isMenuOpen ? 'nav-links-open' : ''}`}>
           <li><a href="https://deepworkstudio.substack.com/" onClick={() => setIsMenuOpen(false)}>Publication</a></li>
-          <li><a href="https://www.notion.so/deepworkstudio/SanctuaryOS-3084f7ca9987809485d5da8f68e203b2?source=copy_link" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>Container</a></li>
+          <li><Link to="/container" onClick={() => setIsMenuOpen(false)}>Container</Link></li>
           <li className="desktop-only">
             <Link to="/join" className={`nav-cta ${pathname === '/join' ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>
               Join Sanctuary
