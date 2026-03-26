@@ -41,10 +41,10 @@ export default function Home() {
         <div className="hero-volume">
         </div>
         <h1>
-          You're creating socio-technical infrastructure. Let's accelerate and make it last.
+          You're building tools for a healthier society. Let's accelerate and make them last.
         </h1>
         <p className="hero-subtitle">
-        A cosmo-local incubator for builders solving real problems — with a path to revenue.
+        A research incubator for digital solutions to real-world problems.
         </p>
       </div>
 
@@ -186,7 +186,7 @@ export default function Home() {
             <p>
               Each chapter is co-created by the community. We test coordination tools, reflect on what works, and treat the residency itself as a design object. If you're drawn to unconventional ways of living, you'll feel it here.
             </p>
-            <Link to="/membership" className="section-link">Learn more →</Link>
+            <Link to="/container" className="section-link">Learn more →</Link>
           </div>
         </FadeIn>
       </section>
@@ -241,7 +241,7 @@ export default function Home() {
             <p>
               How might AI and web3 technology be used to improve our social fabric? Dig deep into the projects and hypotheses that fuel our curiosity. Deep-dives on what we've learned, how it works, and how to do it yourself.
             </p>
-            <Link to="/membership" className="section-link">Subscribe to our publication →</Link>
+            <a href="https://deepworkstudio.substack.com/" target="_blank" rel="noopener noreferrer" className="section-link">Subscribe to our publication →</a>
           </div>
         </FadeIn>
       </section>

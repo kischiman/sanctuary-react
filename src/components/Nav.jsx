@@ -29,7 +29,7 @@ export default function Nav() {
         </button>
         
         <ul className={`nav-links ${isMenuOpen ? 'nav-links-open' : ''}`}>
-          <li><a href="https://deepworkstudio.substack.com/" onClick={() => setIsMenuOpen(false)}>Publication</a></li>
+          <li><a href="https://deepworkstudio.substack.com/" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>Publication</a></li>
           <li><Link to="/container" onClick={() => setIsMenuOpen(false)}>Container</Link></li>
           <li className="desktop-only">
             <Link to="/join" className={`nav-cta ${pathname === '/join' ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>

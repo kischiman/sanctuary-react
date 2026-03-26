@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Membership from './pages/Membership'
 import Join from './pages/Join'
@@ -10,6 +11,7 @@ export default function App() {
   try {
     return (
       <>
+        <ScrollToTop />
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
