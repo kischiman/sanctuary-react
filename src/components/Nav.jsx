@@ -9,7 +9,7 @@ export default function Nav() {
     <nav>
       <div className="nav-container">
         <Link to="/" className="nav-wordmark">
-          <img src="/sanctuary-react/logo.svg" alt="Sanctuary" />
+          <img src="/logo.svg" alt="Sanctuary" />
         </Link>
         
         {/* Mobile CTA - always visible */}
