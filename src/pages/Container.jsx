@@ -9,7 +9,7 @@ export default function Container() {
         <div className="breadcrumb">Container — Research Residency</div>
         <h1>The Container</h1>
         <p className="subtitle">
-          An intentional research residency that balances collaborative work, longevity, and socio-technical innovation.
+           A safe space for builders. Learn in community, increase your healthspan, and collaborate on social technologies.
         </p>
       </div>
 
