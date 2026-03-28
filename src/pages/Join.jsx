@@ -28,6 +28,8 @@ function ScrollArrows({ containerRef }) {
 
 function JoinForm() {
   const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [project, setProject] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [status, setStatus] = useState('idle') // idle, success, error
   const [errorMessage, setErrorMessage] = useState('')
@@ -42,6 +44,16 @@ function JoinForm() {
     
     if (!validateEmail(email)) {
       setErrorMessage('Please enter a valid email address')
+      return
+    }
+
+    if (!name.trim()) {
+      setErrorMessage('Please enter your name')
+      return
+    }
+
+    if (!project.trim()) {
+      setErrorMessage('Please enter your project')
       return
     }
 
@@ -64,7 +76,9 @@ function JoinForm() {
       isCompleted: true,
       responses: {
         "7bbbfa41-15ab-45f9-a10d-618a3896ced1": email,
-        "f37cfc97-d53d-4e96-8280-afb41051cffb": "Join Access"
+        "f37cfc97-d53d-4e96-8280-afb41051cffb": "Join Access",
+        "27fb071e-18f3-4246-bb47-d22ba2c4645d": name,
+        "ba119538-6344-4a4b-866c-b94acf4aec8f": project
       }
     }
     
@@ -110,10 +124,40 @@ function JoinForm() {
   return (
     <form onSubmit={handleSubmit}>
       <input 
+        type="text" 
+        placeholder="Your name" 
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        style={{ 
+          width: '100%', 
+          padding: '12px', 
+          marginBottom: '12px', 
+          border: '1px solid var(--faint)', 
+          borderRadius: '4px', 
+          fontSize: '14px' 
+        }} 
+        required
+      />
+      <input 
         type="email" 
         placeholder="Your email address" 
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        style={{ 
+          width: '100%', 
+          padding: '12px', 
+          marginBottom: '12px', 
+          border: '1px solid var(--faint)', 
+          borderRadius: '4px', 
+          fontSize: '14px' 
+        }} 
+        required
+      />
+      <input 
+        type="text" 
+        placeholder="Describe your project" 
+        value={project}
+        onChange={(e) => setProject(e.target.value)}
         style={{ 
           width: '100%', 
           padding: '12px', 
@@ -191,7 +235,7 @@ export default function Join() {
 
       {/* TRY INDIVIDUAL SESSIONS */}
       <div className="pricing-section" style={{ paddingTop: '80px' }}>
-        <h2>Try individual sessions</h2>
+        <h2>Individual sessions</h2>
         <p style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 0 48px', color: 'var(--text-secondary)' }}>
           Participate actively in our online sessions to get to know us, spotlight your project, and learn with us.
         </p>
@@ -239,6 +283,17 @@ export default function Join() {
             </ul>
             <button className="btn-tier btn-tier--outline" disabled style={{ width: '100%', opacity: 0.6, cursor: 'not-allowed' }}>Coming soon</button>
           </div>
+        </div>
+        
+        <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '48px 0 0', textAlign: 'center' }}>
+          <a 
+            href="https://calendar.google.com/calendar/u/0?cid=Y19kNWU5NWFkZWEyYjAwZjY4YTc5NDIzMzFhM2JhNjgxZGFhM2UwNzgyZDliZTNmN2EwMWQ0ZWJmMzU0YjM2MWUwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="section-link"
+          >
+            View our public calendar →
+          </a>
         </div>
       </div>
 

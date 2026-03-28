@@ -15,22 +15,32 @@ export default function Home() {
   const cardFanRef = useRef(null)
 
   useEffect(() => {
-    // Set initial scroll position to show Matt's card (4th card, index 3) on mobile
+    // Ensure page starts at the top
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+    
+    // Set initial scroll position to show Justina's card (1st card, index 0) on mobile
     const setInitialScroll = () => {
       if (cardFanRef.current && window.innerWidth <= 1024) {
-        const mattCard = cardFanRef.current.children[3] // Matt is the 4th card
-        if (mattCard) {
-          mattCard.scrollIntoView({ behavior: 'smooth', inline: 'center' })
-        }
+        // Reset container scroll to start (Justina's card)
+        cardFanRef.current.scrollLeft = 0
       }
     }
 
-    // Set initial position after a small delay to ensure cards are rendered
-    setTimeout(setInitialScroll, 100)
+    // Set initial position after cards are rendered
+    const timeoutId = setTimeout(setInitialScroll, 150)
 
-    // Also set on resize
-    window.addEventListener('resize', setInitialScroll)
-    return () => window.removeEventListener('resize', setInitialScroll)
+    // Also reset scroll on resize
+    const handleResize = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+      setTimeout(setInitialScroll, 50)
+    }
+
+    window.addEventListener('resize', handleResize)
+    
+    return () => {
+      clearTimeout(timeoutId)
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   return (
@@ -41,7 +51,9 @@ export default function Home() {
         <div className="hero-volume">
         </div>
         <h1>
-          You're building tools for a healthier society. Let's accelerate and make them last.
+          You're building tools for a healthier society.
+        <br/ >
+           Let's accelerate and make them last.
         </h1>
         <p className="hero-subtitle">
         A research incubator for digital solutions to real-world problems.
@@ -250,8 +262,8 @@ export default function Home() {
       <section className="section-wrap">
         <hr className="rule" />
         <FadeIn className="quotes-row two">
-          <blockquote>"I feel support with whatever project I want to work on and get honest feedback."</blockquote>
-          <blockquote>"It allows for deliberate experimentation with new ideas without expectation."</blockquote>
+          <blockquote>"I feel support with whatever project I want to work on and get honest feedback." - Justina</blockquote>
+          <blockquote>"The Sanctuary community's feedback has been instrumental in shaping my app — from design consistency to the finer details I wouldn't have caught on my own. The app side is nearly done, and I feel confident in it largely thanks to the notes and input I've received here." - Stacey</blockquote>
         </FadeIn>
       </section>
 

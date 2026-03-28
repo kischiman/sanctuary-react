@@ -7,7 +7,7 @@ export default function Container() {
       <div className="page-header">
         <hr />
         <div className="breadcrumb">Container — Research Residency</div>
-        <h1>The Container</h1>
+        <h1>The Sanctuary Container</h1>
         <p className="subtitle">
            A safe space for builders. Learn in community, increase your healthspan, and collaborate on social technologies.
         </p>
