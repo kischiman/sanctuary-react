@@ -1,9 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
+import PublicationPopup from './PublicationPopup'
 
 export default function Nav() {
   const { pathname } = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isPublicationPopupOpen, setIsPublicationPopupOpen] = useState(false)
 
   return (
     <nav>
@@ -29,7 +31,7 @@ export default function Nav() {
         </button>
         
         <ul className={`nav-links ${isMenuOpen ? 'nav-links-open' : ''}`}>
-          <li><a href="https://deepworkstudio.substack.com/" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>Publication</a></li>
+          <li><button onClick={() => { setIsPublicationPopupOpen(true); setIsMenuOpen(false); }} className="nav-publication-btn">Publication</button></li>
           <li><Link to="/container" onClick={() => setIsMenuOpen(false)}>Container</Link></li>
           <li className="desktop-only">
             <Link to="/join" className={`nav-cta ${pathname === '/join' ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>
@@ -38,6 +40,11 @@ export default function Nav() {
           </li>
         </ul>
       </div>
+
+      <PublicationPopup 
+        isOpen={isPublicationPopupOpen} 
+        onClose={() => setIsPublicationPopupOpen(false)} 
+      />
     </nav>
   )
 }

@@ -250,7 +250,7 @@ export default function Join() {
         >
           {/* Hot Takes */}
           <div style={{ border: '1px solid var(--faint)', borderRadius: '4px', padding: '24px 20px', background: 'var(--cream)', display: 'flex', flexDirection: 'column' }} className="membership-card-mobile">
-            <h3 style={{ fontFamily: 'var(--sans)', fontSize: '16px', fontWeight: '500', color: 'var(--dark)', marginBottom: '18px' }}>Hot Takes</h3>
+            <h3 style={{ fontFamily: 'var(--sans)', fontSize: '16px', fontWeight: '500', color: 'var(--dark)', marginBottom: '18px' }}>Peer-to-peer Pit</h3>
             <ul style={{ listStyle: 'disc', paddingLeft: '18px', fontSize: '13px', lineHeight: '1.7', color: 'var(--mid)', marginBottom: '20px', flex: 1 }}>
               <li>Peer feedback on current products</li>
               <li>Share progress and get team responses</li>

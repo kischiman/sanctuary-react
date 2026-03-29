@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import FadeIn from '../components/FadeIn'
+import PublicationModal from '../components/PublicationModal'
 import '../styles/profile-cards.css'
 
 // Import face images
@@ -13,6 +14,7 @@ import annaFace from '../assets/faces/Anna-Square.webp'
 
 export default function Home() {
   const cardFanRef = useRef(null)
+  const [isPublicationModalOpen, setIsPublicationModalOpen] = useState(false)
 
   useEffect(() => {
     // Ensure page starts at the top
@@ -21,13 +23,33 @@ export default function Home() {
     // Set initial scroll position to show Justina's card (1st card, index 0) on mobile
     const setInitialScroll = () => {
       if (cardFanRef.current && window.innerWidth <= 1024) {
-        // Reset container scroll to start (Justina's card)
-        cardFanRef.current.scrollLeft = 0
+        const container = cardFanRef.current
+        const firstCard = container.children[0] // Justina's card
+        
+        if (firstCard) {
+          // Disable scroll behavior temporarily
+          container.style.scrollBehavior = 'auto'
+          
+          // Force scroll to show Justina's card
+          container.scrollLeft = 0
+          firstCard.scrollIntoView({ 
+            behavior: 'auto', 
+            inline: 'start',
+            block: 'nearest'
+          })
+          
+          // Double-check with direct assignment
+          setTimeout(() => {
+            container.scrollLeft = 0
+          }, 10)
+        }
       }
     }
 
-    // Set initial position after cards are rendered
-    const timeoutId = setTimeout(setInitialScroll, 150)
+    // Set initial position after cards are rendered - multiple attempts to ensure it works
+    const timeoutId1 = setTimeout(setInitialScroll, 100)
+    const timeoutId2 = setTimeout(setInitialScroll, 300)
+    const timeoutId3 = setTimeout(setInitialScroll, 500)
 
     // Also reset scroll on resize
     const handleResize = () => {
@@ -38,7 +60,9 @@ export default function Home() {
     window.addEventListener('resize', handleResize)
     
     return () => {
-      clearTimeout(timeoutId)
+      clearTimeout(timeoutId1)
+      clearTimeout(timeoutId2)
+      clearTimeout(timeoutId3)
       window.removeEventListener('resize', handleResize)
     }
   }, [])
@@ -194,7 +218,7 @@ export default function Home() {
             <p>
               Sanctuary has a rolling residency — an ongoing innovation lab for how environment, rituals, and tools can accelerate what we can build. A carefully curated group of 5-10, co-living that feels like home within hours. With shared meals, adventurous trips, and a health-first culture.
             </p>
-            <img src="/co-living-sunset.jpg" alt="Modern co-living space with large windows showing people working together inside, surrounded by mountains at sunset" style={{ width: '100%', borderRadius: '8px', margin: '2rem 0' }} />
+            <img src="/co-living-sunset-clean.jpg" alt="Modern co-living space with large windows showing people working together inside, surrounded by mountains at sunset" style={{ width: '100%', borderRadius: '8px', margin: '2rem 0' }} />
             <p>
               Each chapter is co-created by the community. We test coordination tools, reflect on what works, and treat the residency itself as a design object. If you're drawn to unconventional ways of living, you'll feel it here.
             </p>
@@ -253,7 +277,7 @@ export default function Home() {
             <p>
               How might AI and web3 technology be used to improve our social fabric? Dig deep into the projects and hypotheses that fuel our curiosity. Deep-dives on what we've learned, how it works, and how to do it yourself.
             </p>
-            <a href="https://deepworkstudio.substack.com/" target="_blank" rel="noopener noreferrer" className="section-link">Subscribe to our publication →</a>
+            <button onClick={() => setIsPublicationModalOpen(true)} className="section-link publication-link-btn">Subscribe to our publication →</button>
           </div>
         </FadeIn>
       </section>
@@ -267,6 +291,10 @@ export default function Home() {
         </FadeIn>
       </section>
 
+      <PublicationModal 
+        isOpen={isPublicationModalOpen} 
+        onClose={() => setIsPublicationModalOpen(false)} 
+      />
 
     </>
   )

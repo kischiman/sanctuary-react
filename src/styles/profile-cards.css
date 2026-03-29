@@ -216,7 +216,7 @@
     padding: 1rem;
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: none;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -233,12 +233,17 @@
     width: 280px;
     height: 400px;
     flex-shrink: 0;
-    scroll-snap-align: center;
+    scroll-snap-align: none;
   }
 
   .profile-card:first-child {
-    scroll-snap-align: start;
+    scroll-snap-align: none;
     margin-left: 1rem; /* Ensure Justina card is prominently visible on load */
+  }
+
+  /* Force container to start at the beginning */
+  .card-fan {
+    scroll-behavior: auto;
   }
 
   .profile-card:hover {

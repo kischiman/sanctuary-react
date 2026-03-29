@@ -80,6 +80,24 @@ nav .nav-container {
 .nav-links a:hover { color: var(--dark); }
 .nav-links a.active { color: var(--dark); }
 
+.nav-publication-btn {
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+.nav-publication-btn:hover { color: var(--dark); }
+
 .nav-cta {
   display: inline-block;
   border: 1px solid rgba(26, 26, 26, 0.22);
@@ -240,6 +258,13 @@ hr + * .two-col {
   margin-top: 1rem;
 }
 .section-link:hover { color: var(--dark); }
+
+.publication-link-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
 
 /* ─── QUOTES ───────────────────────────────────── */
 .quotes-row {
