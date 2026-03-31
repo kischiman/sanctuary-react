@@ -17,54 +17,8 @@ export default function Home() {
   const [isPublicationModalOpen, setIsPublicationModalOpen] = useState(false)
 
   useEffect(() => {
-    // Ensure page starts at the top
+    // Ensure page starts at the top on load only
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-    
-    // Set initial scroll position to show Justina's card (1st card, index 0) on mobile
-    const setInitialScroll = () => {
-      if (cardFanRef.current && window.innerWidth <= 1024) {
-        const container = cardFanRef.current
-        const firstCard = container.children[0] // Justina's card
-        
-        if (firstCard) {
-          // Disable scroll behavior temporarily
-          container.style.scrollBehavior = 'auto'
-          
-          // Force scroll to show Justina's card
-          container.scrollLeft = 0
-          firstCard.scrollIntoView({ 
-            behavior: 'auto', 
-            inline: 'start',
-            block: 'nearest'
-          })
-          
-          // Double-check with direct assignment
-          setTimeout(() => {
-            container.scrollLeft = 0
-          }, 10)
-        }
-      }
-    }
-
-    // Set initial position after cards are rendered - multiple attempts to ensure it works
-    const timeoutId1 = setTimeout(setInitialScroll, 100)
-    const timeoutId2 = setTimeout(setInitialScroll, 300)
-    const timeoutId3 = setTimeout(setInitialScroll, 500)
-
-    // Also reset scroll on resize
-    const handleResize = () => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-      setTimeout(setInitialScroll, 50)
-    }
-
-    window.addEventListener('resize', handleResize)
-    
-    return () => {
-      clearTimeout(timeoutId1)
-      clearTimeout(timeoutId2)
-      clearTimeout(timeoutId3)
-      window.removeEventListener('resize', handleResize)
-    }
   }, [])
 
   return (
@@ -193,7 +147,6 @@ export default function Home() {
             to="/join" 
             className="profile-card profile-card--cta" 
             style={{ textDecoration: 'none', color: 'inherit' }}
-            onClick={() => window.scrollTo(0, 0)}
           >
             <div className="profile-photo-placeholder">?</div>
             <div className="profile-name">This could be you</div>

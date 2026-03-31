@@ -751,6 +751,8 @@ footer.site-footer span {
     border: none;
     padding: 8px;
     cursor: pointer;
+    z-index: 110;
+    position: relative;
   }
   
   .hamburger-btn span {
@@ -785,7 +787,8 @@ footer.site-footer span {
     text-align: left;
   }
   
-  .nav-links a {
+  .nav-links a,
+  .nav-links button {
     display: block;
     padding: 0.75rem 0;
     font-size: 1rem;
