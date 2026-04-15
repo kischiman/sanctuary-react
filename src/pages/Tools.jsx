@@ -27,7 +27,7 @@ const toolCatalog = [
     feedbackValue: 'moxa',
     description:
       "Moxa unifies your crypto and fiat transactions into a single, seamless dashboard. Manage your burn rate, track recurring expenses, and get a real-time pulse on your runway so you can focus on building what's next.",
-    href: 'https://compassionate-provide-875982.framer.app/',
+    href: 'https://moxa.money',
     image: '/tools/moxa.png',
   },
 ]
