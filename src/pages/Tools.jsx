@@ -113,7 +113,7 @@ export default function Tools() {
       <div className="page-header page-header--catalog">
         <hr />
         <div className="breadcrumb">Tools — Community Products & Services</div>
-        <h1>Try the wonderful creations of our community</h1>
+        <h1>Try the creations of our community</h1>
         <p className="subtitle">
           Sanctuary members create and share products for healthier coordination, clearer thinking,
           and resilient communities.
