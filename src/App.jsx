@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Membership from './pages/Membership'
 import Join from './pages/Join'
 import Container from './pages/Container'
+import Tools from './pages/Tools'
 
 export default function App() {
   try {
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/membership" element={<Membership />} />
           <Route path="/join" element={<Join />} />
           <Route path="/container" element={<Container />} />
+          <Route path="/tools" element={<Tools />} />
         </Routes>
         <Footer />
       </>
