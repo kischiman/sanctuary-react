@@ -32,6 +32,7 @@ export default function Nav() {
         
         <ul className={`nav-links ${isMenuOpen ? 'nav-links-open' : ''}`}>
           <li><button onClick={() => { setIsPublicationPopupOpen(true); setIsMenuOpen(false); }} className="nav-publication-btn">Publication</button></li>
+          <li><Link to="/tools" onClick={() => setIsMenuOpen(false)}>Tools</Link></li>
           <li><Link to="/container" onClick={() => setIsMenuOpen(false)}>Container</Link></li>
           <li className="desktop-only">
             <Link to="/join" className={`nav-cta ${pathname === '/join' ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>

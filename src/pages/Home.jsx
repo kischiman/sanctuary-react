@@ -199,21 +199,16 @@ export default function Home() {
                   <a href="https://usecompass.app" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Compass</a>
                 </li>
                 <li style={{ marginBottom: '0.5rem' }}>
-                  <a href="https://m8.life" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>M8</a>
-                </li>
-                <li style={{ marginBottom: '0.5rem' }}>
-                  <a href="https://synchro-social.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Synchro</a>
-                </li>
-                <li style={{ marginBottom: '0.5rem' }}>
-                  <a href="https://theduoapp.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Duo</a>
+                  <a href="https://synchro-social.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Syncro</a>
                 </li>
                 <li style={{ marginBottom: '0.5rem' }}>
                   <a href="https://compassionate-provide-875982.framer.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Moxa</a>
                 </li>
                 <li style={{ fontStyle: 'italic', color: 'var(--mid)' }}>
-                  And more...
+                  Strategic Foundation and more on the Tools page.
                 </li>
               </ul>
+              <Link to="/tools" className="section-link">Browse tools and services →</Link>
             </div>
            </div>
         </FadeIn>
