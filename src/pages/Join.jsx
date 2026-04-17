@@ -211,7 +211,7 @@ export default function Join() {
       <div className="pricing-section">
         <h2>Participation</h2>
         <p style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 0 2rem', color: 'var(--text-secondary)' }}>
-          Access is currently free while we are working out a flexible membership structure.
+          Membership is free and curated. Register here to connect with us. Our community offers:
         </p>
       </div>
       
@@ -250,19 +250,19 @@ export default function Join() {
         >
           {/* Hot Takes */}
           <div style={{ border: '1px solid var(--faint)', borderRadius: '4px', padding: '24px 20px', background: 'var(--cream)', display: 'flex', flexDirection: 'column' }} className="membership-card-mobile">
-            <h3 style={{ fontFamily: 'var(--sans)', fontSize: '16px', fontWeight: '500', color: 'var(--dark)', marginBottom: '18px' }}>Peer-to-peer Pit</h3>
+            <h3 style={{ fontFamily: 'var(--sans)', fontSize: '16px', fontWeight: '500', color: 'var(--dark)', marginBottom: '18px' }}>SocioTech Hot Takes</h3>
             <ul style={{ listStyle: 'disc', paddingLeft: '18px', fontSize: '13px', lineHeight: '1.7', color: 'var(--mid)', marginBottom: '20px', flex: 1 }}>
               <li>Peer feedback on current products</li>
               <li>Share progress and get team responses</li>
               <li>Accelerate progress and get unstuck</li>
               <li>Offer your services and learn from others</li>
             </ul>
-            <button className="btn-tier btn-tier--outline" disabled style={{ width: '100%', opacity: 0.6, cursor: 'not-allowed' }}>Coming soon</button>
+            <a href="https://luma.com/thesanctuary" target="_blank" rel="noopener noreferrer" className="btn-tier btn-tier--outline" style={{ width: '100%' }}>Sign up</a>
           </div>
 
           {/* Peer Support */}
           <div style={{ border: '1px solid var(--faint)', borderRadius: '4px', padding: '24px 20px', background: 'var(--cream)', display: 'flex', flexDirection: 'column' }} className="membership-card-mobile">
-            <h3 style={{ fontFamily: 'var(--sans)', fontSize: '16px', fontWeight: '500', color: 'var(--dark)', marginBottom: '18px' }}>Peer Support</h3>
+            <h3 style={{ fontFamily: 'var(--sans)', fontSize: '16px', fontWeight: '500', color: 'var(--dark)', marginBottom: '18px' }}>1:1 Feedback</h3>
             <ul style={{ listStyle: 'disc', paddingLeft: '18px', fontSize: '13px', lineHeight: '1.7', color: 'var(--mid)', marginBottom: '20px', flex: 1 }}>
               <li>Share personal blockers and challenges</li>
               <li>Get advice on how to get unstuck</li>
