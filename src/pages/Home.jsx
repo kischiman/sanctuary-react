@@ -44,7 +44,7 @@ export default function Home() {
         <FadeIn className="two-col">
           <div className="sidebar-label">01 — Community</div>
           <div className="content">
-            <h2>Make tangible progress alongside a curated community</h2>
+            <h2>Tangible progress alongside a curated community</h2>
             <p>
             Our high-signal, low-noise collective combines the emotional safety of a close-knit collective with the strategic opportunities of a professional network.  
             </p>
@@ -167,7 +167,7 @@ export default function Home() {
         <FadeIn className="two-col">
           <div className="sidebar-label">02 — Container</div>
           <div className="content">
-            <h2>A co-living container to experiment with how we work and live together</h2>
+            <h2>A safe space for founders</h2>
             <p>
               Sanctuary has a rolling residency — an ongoing innovation lab for how environment, rituals, and tools can accelerate what we can build. A carefully curated group of 5-10, co-living that feels like home within hours. With shared meals, adventurous trips, and a health-first culture.
             </p>
