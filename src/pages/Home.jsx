@@ -169,13 +169,10 @@ export default function Home() {
           <div className="content">
             <h2>A safe space for founders</h2>
             <p>
-              Sanctuary has a rolling residency — an ongoing innovation lab for how environment, rituals, and tools can accelerate what we can build. A carefully curated group of 5-10, co-living that feels like home within hours. With shared meals, adventurous trips, and a health-first culture.
-            </p>
-            <img src="/co-living-sunset-clean.jpg" alt="Modern co-living space with large windows showing people working together inside, surrounded by mountains at sunset" style={{ width: '100%', borderRadius: '8px', margin: '2rem 0' }} />
-            <p>
-              Each chapter is co-created by the community. We test coordination tools, reflect on what works, and treat the residency itself as a design object. If you're drawn to unconventional ways of living, you'll feel it here.
+              A space for deep work, intellectual stimulation with the right group, and tangible progress toward your health goals. Sanctuary has a rolling residency - an ongoing innovation lab for how environment, rituals, and tools can accelerate what we can build. A carefully curated group of 5-10, a space that feels like home within hours.
             </p>
             <Link to="/container" className="section-link">Learn more →</Link>
+            <img src="/co-living-sunset-clean.jpg" alt="Modern co-living space with large windows showing people working together inside, surrounded by mountains at sunset" style={{ width: '100%', borderRadius: '8px', margin: '2rem 0' }} />
           </div>
         </FadeIn>
       </section>
