@@ -196,6 +196,18 @@ function JoinForm() {
 export default function Join() {
   const sessionsScrollRef = useRef(null)
   const [isInviteModalOpen, setIsInviteModalOpen] = useState(false)
+  const [inviteCode, setInviteCode] = useState('')
+  const [inviteError, setInviteError] = useState('')
+
+  const handleInviteUnlock = () => {
+    if (inviteCode.trim().toUpperCase() === 'BEMOREYOU') {
+      setInviteError('')
+      setIsInviteModalOpen(true)
+      return
+    }
+
+    setInviteError('That invite code does not match.')
+  }
 
   return (
     <>
@@ -230,24 +242,46 @@ export default function Join() {
 
         <div style={{ maxWidth: '420px' }}>
           <p style={{ marginBottom: '0.75rem', color: 'var(--text-secondary)' }}>Use your invite code to open the sign-up form:</p>
-          <button
-            type="button"
-            onClick={() => setIsInviteModalOpen(true)}
-            style={{
-              border: '1px solid var(--dark)',
-              background: 'var(--cream)',
-              color: 'var(--dark)',
-              padding: '0.85rem 1rem',
-              borderRadius: '999px',
-              fontFamily: 'var(--sans)',
-              fontSize: '0.95rem',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              cursor: 'pointer'
-            }}
-          >
-            BEMOREYOU
-          </button>
+          <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'stretch', flexWrap: 'wrap' }}>
+            <input
+              type="text"
+              value={inviteCode}
+              onChange={(e) => {
+                setInviteCode(e.target.value)
+                if (inviteError) setInviteError('')
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault()
+                  handleInviteUnlock()
+                }
+              }}
+              placeholder="Enter invite code"
+              aria-label="Invite code"
+              style={{
+                flex: '1 1 220px',
+                minWidth: '220px',
+                border: '1px solid var(--faint)',
+                background: 'white',
+                color: 'var(--dark)',
+                padding: '0.85rem 1rem',
+                borderRadius: '999px',
+                fontFamily: 'var(--sans)',
+                fontSize: '0.95rem'
+              }}
+            />
+            <button
+              type="button"
+              onClick={handleInviteUnlock}
+              className="btn-tier btn-tier--filled"
+              style={{ whiteSpace: 'nowrap' }}
+            >
+              Unlock form
+            </button>
+          </div>
+          {inviteError && (
+            <p style={{ marginTop: '0.75rem', color: '#dc2626', fontSize: '0.9rem' }}>{inviteError}</p>
+          )}
         </div>
       </div>
 
