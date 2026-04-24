@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import '../styles/lightbox.css'
 
 export default function Lightbox({ isOpen, onClose, src, title = "Publication", children, contentClassName = '' }) {
   useEffect(() => {
