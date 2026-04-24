@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-export default function Lightbox({ isOpen, onClose, src, title = "Publication" }) {
+export default function Lightbox({ isOpen, onClose, src, title = "Publication", children, contentClassName = '' }) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -35,15 +35,17 @@ export default function Lightbox({ isOpen, onClose, src, title = "Publication" }
             ×
           </button>
         </div>
-        <div className="lightbox-iframe-container">
-          <iframe
-            src={src}
-            width="100%"
-            height="100%"
-            frameBorder="0"
-            title={title}
-            allowFullScreen
-          />
+        <div className={children ? `lightbox-body ${contentClassName}`.trim() : 'lightbox-iframe-container'}>
+          {children ? children : (
+            <iframe
+              src={src}
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              title={title}
+              allowFullScreen
+            />
+          )}
         </div>
       </div>
     </div>

@@ -69,6 +69,12 @@
   width: 100%;
 }
 
+.lightbox-body {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+}
+
 .lightbox-iframe-container iframe {
   border: none;
 }

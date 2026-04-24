@@ -1,5 +1,6 @@
 import FadeIn from '../components/FadeIn'
 import { useState, useRef } from 'react'
+import Lightbox from '../components/Lightbox'
 
 function ScrollArrows({ containerRef }) {
   const scrollLeft = () => {
@@ -194,6 +195,7 @@ function JoinForm() {
 
 export default function Join() {
   const sessionsScrollRef = useRef(null)
+  const [isInviteModalOpen, setIsInviteModalOpen] = useState(false)
 
   return (
     <>
@@ -211,7 +213,7 @@ export default function Join() {
       <div className="pricing-section">
         <h2>Participation</h2>
         <p style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 0 2rem', color: 'var(--text-secondary)' }}>
-          Membership is free and curated. Register here to connect with us. Our community offers:
+          Membership is curated and invite-only. Enter your invite code to sign up.
         </p>
       </div>
       
@@ -226,10 +228,26 @@ export default function Join() {
           <li>Community access</li>
         </ul>
 
-        <p style={{ marginBottom: '1rem' }}>Sign up here to get access:</p>
-        
-        <div style={{ maxWidth: '400px' }}>
-          <JoinForm />
+        <div style={{ maxWidth: '420px' }}>
+          <p style={{ marginBottom: '0.75rem', color: 'var(--text-secondary)' }}>Use your invite code to open the sign-up form:</p>
+          <button
+            type="button"
+            onClick={() => setIsInviteModalOpen(true)}
+            style={{
+              border: '1px solid var(--dark)',
+              background: 'var(--cream)',
+              color: 'var(--dark)',
+              padding: '0.85rem 1rem',
+              borderRadius: '999px',
+              fontFamily: 'var(--sans)',
+              fontSize: '0.95rem',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              cursor: 'pointer'
+            }}
+          >
+            BEMOREYOU
+          </button>
         </div>
       </div>
 
@@ -237,7 +255,7 @@ export default function Join() {
       <div className="pricing-section" style={{ paddingTop: '80px' }}>
         <h2>Individual sessions</h2>
         <p style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 0 48px', color: 'var(--text-secondary)' }}>
-          Participate actively in our online sessions to get to know us, spotlight your project, and learn with us.
+          Shadow on our online sessions to get to know us and learn with us.
         </p>
       </div>
       
@@ -305,6 +323,20 @@ export default function Join() {
         </p>
         <a href="https://t.me/andrejberlin" target="_blank" rel="noopener noreferrer" className="section-link" style={{ marginTop: 0 }}>Get in touch →</a>
       </div>
+
+      <Lightbox
+        isOpen={isInviteModalOpen}
+        onClose={() => setIsInviteModalOpen(false)}
+        title="Join the Sanctuary network"
+        contentClassName="join-lightbox-body"
+      >
+        <div style={{ maxWidth: '420px', margin: '0 auto', padding: '2rem' }}>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
+            Invite code: <strong>BEMOREYOU</strong>
+          </p>
+          <JoinForm />
+        </div>
+      </Lightbox>
     </>
   )
 }
