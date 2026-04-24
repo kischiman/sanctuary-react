@@ -187,26 +187,8 @@ export default function Home() {
             <p>
               Our members bring a project and a set of open questions. Through structured online sessions, IRL events, and peer accountability, you move through the blockers that have been sitting in your queue for months and always leave with clear next steps.
             </p>
+            <Link to="/tools" className="section-link">Browse tools →</Link>
             <img src="/mobile-apps.jpg" alt="Mobile applications showcasing different interfaces and features" style={{ width: '100%', maxWidth: '600px', borderRadius: '8px', margin: '2rem 0' }} />
-            
-            <div style={{ marginBottom: '2rem' }}>
-              <p style={{ fontFamily: 'var(--sans)', fontSize: '12px', fontWeight: '500', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '1rem' }}>Our featured projects:</p>
-              <ul style={{ listStyle: 'none', padding: '0', fontSize: '14px', lineHeight: '1.9', color: 'var(--mid)' }}>
-                <li style={{ marginBottom: '0.5rem' }}>
-                  <a href="https://usecompass.app" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Compass</a>
-                </li>
-                <li style={{ marginBottom: '0.5rem' }}>
-                  <a href="https://synchro-social.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Syncro</a>
-                </li>
-                <li style={{ marginBottom: '0.5rem' }}>
-                  <a href="https://compassionate-provide-875982.framer.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark)', textDecoration: 'none', borderBottom: '1px solid var(--faint)', paddingBottom: '1px' }}>Moxa</a>
-                </li>
-                <li style={{ fontStyle: 'italic', color: 'var(--mid)' }}>
-                  Strategic Foundation and more on the Tools page.
-                </li>
-              </ul>
-              <Link to="/tools" className="section-link">Browse tools and services →</Link>
-            </div>
            </div>
         </FadeIn>
       </section>
