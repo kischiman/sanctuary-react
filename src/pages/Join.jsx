@@ -196,7 +196,7 @@ function JoinForm() {
 export default function Join() {
   const sessionsScrollRef = useRef(null)
   const [isInviteModalOpen, setIsInviteModalOpen] = useState(false)
-  const [inviteCode, setInviteCode] = useState('BEMOREYOU')
+  const [inviteCode, setInviteCode] = useState('')
   const [inviteError, setInviteError] = useState('')
 
   const handleInviteUnlock = () => {
