@@ -1,6 +1,7 @@
 import FadeIn from '../components/FadeIn'
-import { useState, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Lightbox from '../components/Lightbox'
+import { useLocation } from 'react-router-dom'
 
 function ScrollArrows({ containerRef }) {
   const scrollLeft = () => {
@@ -195,6 +196,7 @@ function JoinForm() {
 
 export default function Join() {
   const sessionsScrollRef = useRef(null)
+  const location = useLocation()
   const [isInviteModalOpen, setIsInviteModalOpen] = useState(false)
   const [inviteCode, setInviteCode] = useState('')
   const [inviteError, setInviteError] = useState('')
@@ -208,6 +210,20 @@ export default function Join() {
 
     setInviteError('That invite code does not match.')
   }
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    const codeFromUrl = searchParams.get('code')
+
+    if (!codeFromUrl) return
+
+    setInviteCode(codeFromUrl)
+
+    if (codeFromUrl.trim().toUpperCase() === 'BEMOREYOU') {
+      setInviteError('')
+      setIsInviteModalOpen(true)
+    }
+  }, [location.search])
 
   return (
     <>
