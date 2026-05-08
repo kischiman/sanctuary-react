@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Work Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #0a0a0a;
+    --ink-soft: #444;
+    --ink-faint: #888;
+    --line: #e8e8e8;
+    --line-strong: #0a0a0a;
+    --blue: #0066FF;
+    --blue-soft: #e6efff;
+    --warn: #ff5722;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--ink); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .serif { font-family: 'Fraunces', serif; font-weight: 400; letter-spacing: -0.02em; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- TOP NAV ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line-strong);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 32px;
+  }
+  .brand { display: flex; align-items: baseline; gap: 10px; }
+  .brand-mark {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 20px; letter-spacing: -0.02em;
+  }
+  .brand-mark::before { content: "◆"; color: var(--blue); margin-right: 8px; font-size: 14px; }
+  .brand-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-tabs { display: flex; gap: 4px; }
+  .nav-tab {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 8px 14px; cursor: pointer; border: 1px solid transparent;
+    transition: all 0.15s ease;
+  }
+  .nav-tab:hover { color: var(--blue); }
+  .nav-tab.active { background: var(--ink); color: var(--bg); }
+  .nav-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); }
+  .nav-meta .live { color: var(--blue); }
+  .nav-meta .live::before { content: "●"; margin-right: 4px; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  /* ---------- PAGE CONTAINER ---------- */
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* HOME hero */
+  .hero-strip {
+    border-bottom: 1px solid var(--line-strong);
+    padding: 80px 32px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-strip::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.4; pointer-events: none;
+  }
+  .hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 48px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .hero-meta-r { display: flex; gap: 24px; }
+  .hero-headline {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 0.98; letter-spacing: -0.035em;
+    max-width: 1100px;
+  }
+  .hero-headline .em { font-style: italic; font-weight: 400; }
+  .hero-headline .blue { color: var(--blue); }
+  .hero-trust {
+    margin-top: 28px;
+    font-family: 'Fraunces', serif; font-weight: 400; font-style: italic;
+    font-size: clamp(20px, 2.2vw, 26px);
+    letter-spacing: -0.015em; line-height: 1.3;
+    color: var(--ink-soft);
+    max-width: 720px;
+  }
+  .hero-trust .em { font-weight: 500; color: var(--ink); font-style: normal; }
+  .hero-trust .blue { color: var(--blue); font-style: normal; font-weight: 500; }
+
+  /* IMPACT STATS BAND */
+  .impact-band {
+    border-bottom: 1px solid var(--line-strong);
+    padding: 56px 32px;
+    background: #fafafa;
+  }
+  .impact-inner { max-width: 1280px; margin: 0 auto; }
+  .impact-summary {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .impact-summary-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    border-left: 2px solid var(--blue);
+    padding-left: 16px;
+  }
+  .impact-summary-totals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .impact-summary-total {
+    display: flex; flex-direction: column;
+    border-top: 1px solid var(--ink);
+    padding-top: 14px;
+  }
+  .impact-summary-total .num {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(36px, 4vw, 48px);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .impact-summary-total .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-faint); margin-top: 10px;
+  }
+
+  /* TRUSTED BY LOGOS */
+  .logos-row {
+    border-bottom: 1px solid var(--line-strong);
+    padding: 28px 32px;
+    background: #fafafa;
+  }
+  .logos-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 220px 1fr; align-items: center; gap: 40px;
+  }
+  .logos-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-faint); line-height: 1.5;
+  }
+  .logos-label strong { color: var(--ink); display: block; }
+  .logos {
+    display: flex; gap: 56px; align-items: center; flex-wrap: wrap;
+    font-family: 'Fraunces', serif;
+  }
+  .logo-item {
+    display: flex; align-items: center; gap: 10px;
+    color: var(--ink); opacity: 0.75; transition: opacity 0.2s;
+  }
+  .logo-item:hover { opacity: 1; }
+  .logo-item svg { flex-shrink: 0; }
+  .logo-name { font-size: 17px; font-weight: 500; letter-spacing: -0.01em; }
+  .logo-name.sans { font-family: 'Inter', sans-serif; }
+
+  /* SERVICES */
+  .services {
+    border-bottom: 1px solid var(--line-strong);
+    padding: 80px 32px;
+  }
+  .services-inner { max-width: 1280px; margin: 0 auto; }
+  .section-head {
+    display: grid; grid-template-columns: 220px 1fr; gap: 40px;
+    margin-bottom: 48px; align-items: end;
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--blue);
+  }
+  .section-title {
+    font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.05; letter-spacing: -0.025em;
+  }
+  .section-desc { color: var(--ink-soft); max-width: 520px; font-size: 15px; }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line-strong);
+  }
+  .service-cell {
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 32px 24px 28px;
+    min-height: 260px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+  .service-cell:last-child { border-right: none; }
+  .service-cell:hover { background: var(--blue-soft); }
+  .service-cell:hover .service-arrow { color: var(--blue); transform: translate(2px, -2px); }
+  .service-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.08em;
+  }
+  .service-name {
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 26px; letter-spacing: -0.02em;
+    margin-top: 18px; line-height: 1.05;
+  }
+  .service-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-soft); margin-top: 8px;
+  }
+  .service-arrow {
+    align-self: flex-end; font-size: 20px; color: var(--ink-faint);
+    transition: all 0.2s ease;
+  }
+
+  /* AI BOT SECTION */
+  .ai-section {
+    border-bottom: 1px solid var(--line-strong);
+    padding: 80px 32px;
+    background: #0a0a0a;
+    color: #fafafa;
+    position: relative;
+    overflow: hidden;
+  }
+  .ai-section::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 80% 20%, rgba(0, 102, 255, 0.18), transparent 50%);
+    pointer-events: none;
+  }
+  .ai-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+  .ai-head {
+    display: grid; grid-template-columns: 220px 1fr; gap: 40px;
+    margin-bottom: 48px; align-items: end;
+  }
+  .ai-head .section-num { color: var(--blue); }
+  .ai-head .section-title { color: #fafafa; }
+  .ai-head .section-desc { color: #aaa; }
+
+  .ai-stage {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 0;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    background: #0f0f0f;
+  }
+  .ai-character {
+    border-right: 1px solid #222;
+    padding: 48px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.08), transparent 70%),
+      #0f0f0f;
+    position: relative; min-height: 480px;
+  }
+  .character-blob {
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #4a8fff 0%, #0066FF 40%, #003a99 100%);
+    position: relative;
+    box-shadow: 0 0 80px rgba(0, 102, 255, 0.3);
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  .character-blob::after {
+    content: ""; position: absolute; top: 25%; left: 25%; width: 30%; height: 30%;
+    background: rgba(255,255,255,0.4); border-radius: 50%; filter: blur(20px);
+  }
+  .character-mouth {
+    position: absolute; bottom: 35%; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 6px; background: #001a4d; border-radius: 0;
+    animation: talk 0.8s ease-in-out infinite;
+  }
+  @keyframes talk {
+    0%, 100% { height: 4px; width: 50px; }
+    50% { height: 12px; width: 56px; }
+  }
+  .character-label {
+    margin-top: 28px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .character-name {
+    margin-top: 8px;
+    font-family: 'Fraunces', serif; font-size: 22px; letter-spacing: -0.02em;
+  }
+  .character-status {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--blue);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .character-status::before { content: "●"; margin-right: 6px; animation: pulse 1.5s infinite; }
+
+  .ai-chat { padding: 0; display: flex; flex-direction: column; }
+  .chat-log { flex: 1; padding: 32px; display: flex; flex-direction: column; gap: 18px; overflow-y: auto; min-height: 380px; }
+  .chat-msg { max-width: 90%; padding: 14px 18px; font-size: 14px; line-height: 1.5; border: 1px solid #222; }
+  .chat-msg.bot { align-self: flex-start; background: #161616; color: #e8e8e8; }
+  .chat-msg.bot::before {
+    content: "ARIA"; display: block;
+    font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.12em; color: var(--blue);
+    margin-bottom: 6px;
+  }
+  .chat-msg.user { align-self: flex-end; background: var(--blue); color: white; border-color: var(--blue); }
+  .chat-input-row { display: grid; grid-template-columns: 1fr auto; border-top: 1px solid #222; }
+  .chat-input { background: transparent; border: none; outline: none; color: #fafafa; padding: 20px 24px; font-family: 'Inter', sans-serif; font-size: 14px; }
+  .chat-input::placeholder { color: #555; }
+  .chat-send {
+    background: var(--blue); color: white; border: none; padding: 0 32px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.15s;
+  }
+  .chat-send:hover { background: #0052cc; }
+
+  /* STEPS */
+  .steps { border-bottom: 1px solid var(--line-strong); padding: 80px 32px; }
+  .steps-inner { max-width: 1280px; margin: 0 auto; }
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border-top: 1px solid var(--line-strong);
+    margin-top: 48px;
+  }
+  .step { padding: 40px 32px 36px; border-right: 1px solid var(--line); position: relative; min-height: 240px; display: flex; flex-direction: column; }
+  .step:last-child { border-right: none; }
+  .step-num { font-family: 'Fraunces', serif; font-weight: 300; font-size: 64px; line-height: 1; color: var(--blue); letter-spacing: -0.04em; }
+  .step-title { margin-top: 24px; font-family: 'Fraunces', serif; font-weight: 400; font-size: 24px; letter-spacing: -0.02em; }
+  .step-desc { margin-top: 12px; font-size: 14px; color: var(--ink-soft); line-height: 1.55; max-width: 280px; }
+  .step-marker { position: absolute; top: 32px; right: 32px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* FOOTER */
+  .footer { padding: 40px 32px; background: #0a0a0a; color: #888; font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .footer a { color: #888; margin-left: 24px; }
+  .footer a:hover { color: var(--blue); }
+
+  /* TEAM */
+  .team-page { padding: 0; }
+  .team-hero { border-bottom: 1px solid var(--line-strong); padding: 80px 32px 60px; position: relative; overflow: hidden; }
+  .team-hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(to right, var(--line) 1px, transparent 1px), linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 80px 80px; opacity: 0.4; pointer-events: none;
+  }
+  .team-hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+  .team-headline { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(48px, 6vw, 80px); line-height: 1; letter-spacing: -0.03em; }
+  .team-headline .em { font-style: italic; }
+  .team-sub { margin-top: 24px; font-size: 16px; color: var(--ink-soft); max-width: 560px; }
+  .team-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong);
+  }
+  .team-card { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 36px 32px 32px; transition: background 0.2s; cursor: pointer; position: relative; }
+  .team-card:nth-child(3n) { border-right: none; }
+  .team-card:hover { background: #fafafa; }
+  .team-card:hover .team-arrow { color: var(--blue); transform: translate(2px, -2px); }
+  .team-photo { width: 100%; aspect-ratio: 4 / 5; background: #f0f0f0; margin-bottom: 24px; position: relative; overflow: hidden; border: 1px solid var(--line); }
+  .team-photo::before { content: "PHOTO"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: #c0c0c0; }
+  .team-meta-line { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+  .team-id { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.08em; }
+  .team-name { font-family: 'Fraunces', serif; font-weight: 400; font-size: 28px; letter-spacing: -0.02em; line-height: 1.05; }
+  .team-role { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-soft); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 8px; }
+  .team-tags { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .team-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; padding: 4px 8px; border: 1px solid var(--line); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+  .team-arrow { position: absolute; top: 32px; right: 32px; font-size: 18px; color: var(--ink-faint); transition: all 0.2s ease; }
+
+  /* SERVICES PAGE */
+  .services-page { padding: 0; }
+  .services-page-hero { border-bottom: 1px solid var(--line-strong); padding: 80px 32px 60px; position: relative; overflow: hidden; }
+  .services-page-hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(to right, var(--line) 1px, transparent 1px), linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 80px 80px; opacity: 0.4; pointer-events: none;
+  }
+  .services-page-hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+
+  /* CATALOG: COLUMN LAYOUT (DESKTOP) */
+  .services-catalog-columns {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong);
+  }
+  .catalog-column { border-right: 1px solid var(--line); padding: 40px 28px 48px; background: var(--bg); display: flex; flex-direction: column; }
+  .catalog-column:last-child { border-right: none; }
+  .catalog-column:nth-child(2), .catalog-column:nth-child(4) { background: #fafafa; }
+  .catalog-column-head { margin-bottom: 32px; }
+  .catalog-column-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+  .catalog-column-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: 24px; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .catalog-column-desc { color: var(--ink-soft); font-size: 13px; line-height: 1.55; margin-bottom: 14px; }
+  .catalog-column-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); padding-bottom: 4px; border-bottom: 1px solid var(--ink); }
+  .catalog-card { border-bottom: 1px solid var(--line); padding: 24px 0 22px; cursor: pointer; transition: background 0.15s; position: relative; }
+  .catalog-card:hover { background: rgba(0, 102, 255, 0.04); }
+  .catalog-card:hover .catalog-card-arrow { color: var(--blue); transform: translate(2px, -2px); }
+  .catalog-card-person { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .catalog-card-avatar { width: 32px; height: 32px; background: #e8e8e8; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 14px; color: var(--ink-faint); flex-shrink: 0; }
+  .catalog-card-person-name { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); }
+  .catalog-card-name { font-family: 'Fraunces', serif; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; padding-right: 24px; }
+  .catalog-card-desc { font-size: 12.5px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 14px; }
+  .catalog-card-foot { display: flex; justify-content: space-between; align-items: baseline; }
+  .catalog-card-price { font-family: 'Fraunces', serif; font-size: 18px; letter-spacing: -0.02em; }
+  .catalog-card-price .em { font-style: italic; color: var(--ink-faint); font-size: 11px; margin-left: 2px; font-family: 'Inter', sans-serif; }
+  .catalog-card-arrow { color: var(--ink-faint); font-size: 14px; transition: all 0.2s ease; }
+  .catalog-empty { color: var(--ink-faint); font-style: italic; font-size: 13px; padding: 20px 0; }
+
+  /* CATALOG: TABS (MOBILE) */
+  .services-catalog-tabs { display: none; }
+  .catalog-tabs-bar { display: flex; flex-wrap: wrap; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); background: var(--bg); position: sticky; top: 56px; z-index: 5; }
+  .catalog-tab { flex: 1 1 50%; padding: 14px 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; text-align: center; cursor: pointer; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--ink-faint); transition: all 0.15s; line-height: 1.3; }
+  .catalog-tab:nth-child(2n) { border-right: none; }
+  .catalog-tab:nth-last-child(-n+2) { border-bottom: none; }
+  .catalog-tab.active { background: var(--ink); color: var(--bg); }
+  .catalog-tab-count { display: block; margin-top: 4px; font-size: 9px; opacity: 0.6; }
+  .catalog-panel { display: none; padding: 32px 20px 48px; }
+  .catalog-panel.active { display: block; }
+  .catalog-panel .catalog-column-head { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+
+  /* PROFILE PAGE */
+  .profile-page { padding: 0; }
+  .profile-bar { border-bottom: 1px solid var(--line-strong); padding: 14px 32px; background: #fafafa; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; }
+  .profile-bar-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; }
+  .profile-bar a { color: var(--blue); }
+  .profile-main { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 380px 1fr; border-bottom: 1px solid var(--line-strong); }
+  .profile-left { border-right: 1px solid var(--line-strong); padding: 56px 40px; }
+  .profile-photo { width: 100%; aspect-ratio: 1 / 1; background: #f0f0f0; border: 1px solid var(--line); margin-bottom: 28px; position: relative; }
+  .profile-photo::before { content: "PROFILE PHOTO"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #c0c0c0; }
+  .profile-id { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.08em; margin-bottom: 8px; }
+  .profile-name { font-family: 'Fraunces', serif; font-weight: 400; font-size: 44px; letter-spacing: -0.025em; line-height: 1; margin-bottom: 8px; }
+  .profile-desc { font-size: 15px; color: var(--ink-soft); line-height: 1.6; border-top: 1px solid var(--line); padding-top: 20px; margin-top: 24px; }
+  .profile-links { margin-top: 28px; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--line); }
+  .profile-link { display: grid; grid-template-columns: 110px 1fr auto; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: center; font-size: 14px; transition: color 0.15s; }
+  .profile-link:hover { color: var(--blue); }
+  .profile-link .label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); }
+  .profile-link .ext { color: var(--ink-faint); }
+  .profile-right { padding: 56px 48px; }
+  .profile-section { margin-bottom: 56px; }
+  .profile-section-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--line-strong); padding-bottom: 14px; margin-bottom: 28px; }
+  .profile-section-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: 26px; letter-spacing: -0.02em; }
+  .profile-section-count { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .service-detail-list { border-top: 1px solid var(--line-strong); }
+  .service-detail { border-bottom: 1px solid var(--line); padding: 32px 0 36px; display: grid; grid-template-columns: 60px 1fr 200px; gap: 32px; }
+  .service-detail-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--blue); letter-spacing: 0.08em; padding-top: 6px; }
+  .service-detail-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: 32px; letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 14px; }
+  .service-detail-desc { font-size: 15px; line-height: 1.6; color: var(--ink-soft); max-width: 560px; }
+  .service-detail-bullets { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .service-detail-bullet { display: grid; grid-template-columns: 14px 1fr; gap: 12px; font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+  .service-detail-bullet::before { content: ""; width: 6px; height: 6px; background: var(--ink); margin-top: 9px; }
+  .service-detail-meta { display: flex; flex-direction: column; gap: 18px; border-left: 1px solid var(--line); padding-left: 24px; }
+  .meta-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 6px; }
+  .meta-price { font-family: 'Fraunces', serif; font-size: 24px; letter-spacing: -0.02em; color: var(--ink); }
+  .meta-price .em { font-style: italic; color: var(--ink-faint); font-size: 13px; margin-left: 4px; font-family: 'Inter', sans-serif; }
+  .track-record { display: flex; flex-direction: column; gap: 6px; }
+  .track-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink); letter-spacing: 0.04em; padding: 6px 0; border-top: 1px dashed var(--line); }
+  .track-item:first-of-type { border-top: 1px solid var(--ink); }
+
+  .projects-list { border-top: 1px solid var(--line); }
+  .project-row { display: grid; grid-template-columns: 60px 1.4fr 1fr auto; padding: 18px 0; border-bottom: 1px solid var(--line); align-items: baseline; gap: 24px; transition: background 0.15s; cursor: pointer; }
+  .project-row:hover { background: #fafafa; }
+  .project-year { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); letter-spacing: 0.06em; }
+  .project-name { font-family: 'Fraunces', serif; font-size: 18px; letter-spacing: -0.015em; }
+  .project-name .em { font-style: italic; color: var(--ink-soft); font-size: 14px; margin-left: 6px; }
+  .project-role { font-size: 13px; color: var(--ink-soft); }
+  .project-arrow { font-size: 14px; color: var(--ink-faint); }
+  .project-row:hover .project-arrow { color: var(--blue); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .service-cell:nth-child(2n) { border-right: none; }
+    .services-catalog-columns { grid-template-columns: repeat(2, 1fr); }
+    .catalog-column:nth-child(2n) { border-right: none; }
+    .catalog-column:nth-child(3) { background: #fafafa; }
+    .catalog-column:nth-child(4) { background: var(--bg); }
+  }
+  @media (max-width: 900px) {
+    .topbar { flex-wrap: wrap; gap: 12px; padding: 12px 20px; }
+    .nav-meta { display: none; }
+    .hero-strip, .services, .ai-section, .steps, .team-hero, .impact-band { padding-left: 20px; padding-right: 20px; }
+    .section-head, .ai-head, .logos-inner { grid-template-columns: 1fr; gap: 16px; }
+    .impact-summary { grid-template-columns: 1fr; gap: 28px; }
+    .impact-summary-totals { grid-template-columns: 1fr; gap: 20px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .service-cell:nth-child(2n) { border-right: none; }
+    .ai-stage { grid-template-columns: 1fr; }
+    .ai-character { border-right: none; border-bottom: 1px solid #222; min-height: 320px; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .step { border-right: none; border-bottom: 1px solid var(--line); }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .team-card:nth-child(3n) { border-right: 1px solid var(--line); }
+    .team-card:nth-child(2n) { border-right: none; }
+    .profile-main { grid-template-columns: 1fr; }
+    .profile-left { border-right: none; border-bottom: 1px solid var(--line-strong); padding: 32px 20px; }
+    .profile-right { padding: 32px 20px; }
+    .service-detail { grid-template-columns: 1fr; gap: 18px; }
+    .service-detail-meta { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 16px; }
+    .project-row { grid-template-columns: 50px 1fr auto; gap: 12px; }
+    .project-role { display: none; }
+    .services-page-hero { padding-left: 20px; padding-right: 20px; }
+    .services-catalog-columns { display: none; }
+    .services-catalog-tabs { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="brand">
+    <div class="brand-mark">Deep Work Network</div>
+    <div class="brand-tag">est. 2021 / nomadic</div>
+  </div>
+  <div class="nav-tabs">
+    <div class="nav-tab active" data-page="home">Home</div>
+    <div class="nav-tab" data-page="services">Services</div>
+    <div class="nav-tab" data-page="team">Team</div>
+  </div>
+  <div class="nav-meta">
+    <span class="live">Available — May 2026</span>
+  </div>
+</nav>
+
+<!-- ========== HOME ========== -->
+<div class="page active" id="page-home">
+
+  <section class="hero-strip">
+    <div class="hero-inner">
+      <div class="hero-meta">
+        <span>№ 001 / The Studio</span>
+        <div class="hero-meta-r">
+          <span>Berlin · Lisboa · Málaga</span>
+          <span>v.4.7</span>
+        </div>
+      </div>
+      <h1 class="hero-headline">
+        Trusted by <span class="blue">billion-dollar</span> companies.
+      </h1>
+      <p class="hero-trust">
+        Product market fit for <span class="em">technical teams</span> and polymaths.
+      </p>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENTS BAND -->
+  <section class="impact-band">
+    <div class="impact-inner">
+      <div class="impact-summary">
+        <div class="impact-summary-label">Across our engagements</div>
+        <div class="impact-summary-totals">
+          <div class="impact-summary-total">
+            <span class="num">$36M+</span>
+            <span class="label">raised by clients</span>
+          </div>
+          <div class="impact-summary-total">
+            <span class="num">139K+</span>
+            <span class="label">users reached</span>
+          </div>
+          <div class="impact-summary-total">
+            <span class="num">35</span>
+            <span class="label">chains supported</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTED BY LOGOS -->
+  <section class="logos-row">
+    <div class="logos-inner">
+      <div class="logos-label">
+        <strong>Our team has worked with the best.</strong>
+        Selected engagements 2018–2026
+      </div>
+      <div class="logos">
+        <div class="logo-item">
+          <svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 1L1 7v8l10 6 10-6V7L11 1zm0 2.3L18.5 8 11 12.7 3.5 8 11 3.3z" fill="currentColor"/></svg>
+          <span class="logo-name">MakerDAO</span>
+        </div>
+        <div class="logo-item">
+          <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M2 11h18M11 2v18M4 5c4 3 10 3 14 0M4 17c4-3 10-3 14 0" stroke="currentColor" stroke-width="0.8" fill="none"/></svg>
+          <span class="logo-name sans">United Nations</span>
+        </div>
+        <div class="logo-item">
+          <svg width="18" height="22" viewBox="0 0 18 22"><path d="M9 1L1 11l8 4 8-4L9 1zm0 13L1 13l8 8 8-8-8 1z" fill="currentColor"/></svg>
+          <span class="logo-name">Ethereum Foundation</span>
+        </div>
+        <div class="logo-item">
+          <svg width="22" height="22" viewBox="0 0 22 22"><rect x="2" y="2" width="18" height="18" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M6 14l3-4 3 2 4-6" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>
+          <span class="logo-name sans">London Stock Exchange</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="services-inner">
+      <div class="section-head">
+        <div class="section-num">§ 02 / Services</div>
+        <div>
+          <h2 class="section-title">What we do, with intent.</h2>
+          <p class="section-desc">Four overlapping practices. We typically combine two or three per engagement.</p>
+        </div>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-cell">
+          <div>
+            <div class="service-num">01</div>
+            <div class="service-name">Go-to-market<br>strategy</div>
+            <div class="service-tag">Positioning · Vision · Launch</div>
+          </div>
+          <div class="service-arrow">↗</div>
+        </div>
+        <div class="service-cell">
+          <div>
+            <div class="service-num">02</div>
+            <div class="service-name">Product &<br>experience<br>design</div>
+            <div class="service-tag">UX · Systems</div>
+          </div>
+          <div class="service-arrow">↗</div>
+        </div>
+        <div class="service-cell">
+          <div>
+            <div class="service-num">03</div>
+            <div class="service-name">Visual<br>identity</div>
+            <div class="service-tag">Brand · Voice</div>
+          </div>
+          <div class="service-arrow">↗</div>
+        </div>
+        <div class="service-cell">
+          <div>
+            <div class="service-num">04</div>
+            <div class="service-name">Automation<br>with AI &amp;<br>crypto</div>
+            <div class="service-tag">Agents · On-chain</div>
+          </div>
+          <div class="service-arrow">↗</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI BOT -->
+  <section class="ai-section">
+    <div class="ai-inner">
+      <div class="ai-head">
+        <div class="section-num">§ 03 / Match</div>
+        <div>
+          <h2 class="section-title">Describe what you're building.<br>See who might be a fit.</h2>
+          <p class="section-desc">Aria is our matchmaker. Tell her your situation in plain language and she'll suggest the two or three operators most likely to move you forward.</p>
+        </div>
+      </div>
+
+      <div class="ai-stage">
+        <div class="ai-character">
+          <div class="character-blob">
+            <div class="character-mouth"></div>
+          </div>
+          <div class="character-label">Studio Concierge</div>
+          <div class="character-name">Aria</div>
+          <div class="character-status">Online · ready to help</div>
+        </div>
+
+        <div class="ai-chat">
+          <div class="chat-log" id="chat-log">
+            <div class="chat-msg bot">Hi — I'm Aria. Tell me what you're building, and what kind of help you actually need. The more specific, the better the match.</div>
+            <div class="chat-msg user">We're a Series A fintech. Strong product, weak narrative. Need positioning before our raise.</div>
+            <div class="chat-msg bot">Got it. Three of our team have done this exact work — Andrej (strategy), Stacey (marketing), and Jane (story). Want me to introduce you?</div>
+          </div>
+          <div class="chat-input-row">
+            <input class="chat-input" id="chat-input" placeholder="Describe your project..." />
+            <button class="chat-send" onclick="sendChat()">Ask →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="steps">
+    <div class="steps-inner">
+      <div class="section-head">
+        <div class="section-num">§ 04 / Process</div>
+        <div>
+          <h2 class="section-title">Three steps to working together.</h2>
+          <p class="section-desc">No sales calls. No gatekeepers. Most engagements start within a week.</p>
+        </div>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-marker">Step 01</div>
+          <div class="step-num">01</div>
+          <div class="step-title">Find your expert</div>
+          <div class="step-desc">Browse the team, or let Aria match you with someone whose work pattern fits your problem.</div>
+        </div>
+        <div class="step">
+          <div class="step-marker">Step 02</div>
+          <div class="step-num">02</div>
+          <div class="step-title">Send them a message</div>
+          <div class="step-desc">Direct contact via Telegram or email. No forms, no qualification calls. They reply themselves.</div>
+        </div>
+        <div class="step">
+          <div class="step-marker">Step 03</div>
+          <div class="step-num">03</div>
+          <div class="step-title">Start working together</div>
+          <div class="step-desc">A short paid scoping session, then a fixed-price engagement or a weekly retainer — your call.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>© Deep Work Network 2026</div>
+      <div>
+        <a href="#">Substack</a>
+        <a href="#">Telegram</a>
+        <a href="#">Email</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ========== SERVICES ========== -->
+<div class="page services-page" id="page-services">
+
+  <section class="services-page-hero">
+    <div class="services-page-hero-inner">
+      <div class="hero-meta">
+        <span>№ 003 / Services Catalog</span>
+        <div class="hero-meta-r">
+          <span id="services-count">— offerings</span>
+          <span>By practice</span>
+        </div>
+      </div>
+      <h2 class="team-headline">All offerings, by <span class="em">practice</span>.</h2>
+      <p class="team-sub">Each service is owned and delivered by one person on the team. Click through to their profile to book or learn more.</p>
+    </div>
+  </section>
+
+  <div id="services-categories"></div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>© Deep Work Network 2026</div>
+      <div>
+        <a href="#">Substack</a>
+        <a href="#">Telegram</a>
+        <a href="#">Email</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ========== TEAM ========== -->
+<div class="page team-page" id="page-team">
+
+  <section class="team-hero">
+    <div class="team-hero-inner">
+      <div class="hero-meta">
+        <span>№ 002 / The Team</span>
+        <div class="hero-meta-r">
+          <span>9 operators · 4 continents</span>
+          <span>Reputation-weighted</span>
+        </div>
+      </div>
+      <h2 class="team-headline">A small bench of <span class="em">senior</span> operators.</h2>
+      <p class="team-sub">Each member has run their own thing, shipped their own work, and earned the right to a place at the table. No juniors. No agency overhead.</p>
+    </div>
+  </section>
+
+  <div class="team-grid" id="team-grid"></div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>© Deep Work Network 2026</div>
+      <div>
+        <a href="#">Substack</a>
+        <a href="#">Telegram</a>
+        <a href="#">Email</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ========== PROFILE ========== -->
+<div class="page profile-page" id="page-profile">
+  <div id="profile-content"></div>
+</div>
+
+<script>
+  const CATEGORIES = [
+    { key: 'gtm', num: '01', title: 'Go-to-market strategy', desc: 'Positioning, vision, narrative, mechanism design, and launch sequencing. The work that decides whether everything else lands.' },
+    { key: 'product', num: '02', title: 'Product & experience design', desc: 'UX, product systems, end-to-end experience flows. For teams who want their product to feel as considered as their idea.' },
+    { key: 'visual', num: '03', title: 'Visual identity', desc: 'Brand, voice, visual systems. The look that makes a serious company recognisable from across the room.' },
+    { key: 'automation', num: '04', title: 'Automation with AI & crypto', desc: 'Practical agents, on-chain mechanism design, and back-office automation. For teams who want machines doing the work that machines should do.' }
+  ];
+
+  const TEAM = [
+    {
+      id: '001', slug: 'andrej', name: 'Andrej Berlin', role: 'Founder · Strategy',
+      tagline: 'Strategy · €200/hr', tags: ['Strategy', 'Facilitation'],
+      bio: "Founder of Sanctuary. Fifteen years in organizational design, mechanism design, and Web3 facilitation. Previously helped shape Devcon for the Ethereum Foundation. Lives between Chiang Mai, Portugal, and a farm in southern Spain.",
+      links: [
+        { label: 'Website', value: 'sanctuary.studio', href: '#' },
+        { label: 'LinkedIn', value: '/in/andrej-berlin', href: '#' },
+        { label: 'Telegram', value: '@andrejberlin', href: '#' },
+        { label: 'Email', value: 'andrej@sanctuary.studio', href: '#' }
+      ],
+      services: [
+        {
+          category: 'gtm', name: 'Office Hours',
+          desc: "A single hour, used well. Bring a thorny question on service design, workshop design, experience design, or product design — or a request for an introduction to someone in the network who has lived your problem.",
+          bullets: [
+            'Get advice on service, workshop, experience, or product design.',
+            'Get introductions to experts who understand your problem.',
+            'Booked by the hour. No commitment beyond the call.'
+          ],
+          priceLabel: 'Rate', price: '€200', priceUnit: '/ hr', shortPrice: '€200/hr'
+        },
+        {
+          category: 'gtm', name: 'Strategic Foundation',
+          desc: 'A series of hands-on workshops culminating in a strategic document with clear next steps. Built for teams who feel like they\'re reacting to the market instead of shaping it.',
+          bullets: [
+            'Get your audiences to actually engage with your product or ecosystem.',
+            'Stop pivoting and playing catch-up with your competition.',
+            'Leave with a written strategy and a sequenced roadmap, not a deck.'
+          ],
+          priceLabel: 'Starting at', price: '$500', priceUnit: '+', shortPrice: 'from $500',
+          trackRecord: ['Enscribe', 'Ethereum Foundation', 'GoodDollar']
+        }
+      ],
+      projects: [
+        { year: '2025', name: 'Sanctuary', em: 'research incubator', role: 'Founder, operator' },
+        { year: '2024', name: 'Ethereum Foundation', em: 'Devcon planning', role: 'Facilitation lead' },
+        { year: '2024', name: 'GoodDollar', em: 'messaging architecture', role: 'Strategy advisor' },
+        { year: '2023', name: "Fools' Valley", em: 'space strategy', role: 'Co-designer' },
+        { year: '2023', name: 'Bonfires Vietnam', em: 'residency', role: 'Facilitator' },
+        { year: '2022', name: 'SanctuaryOS', em: 'platform build', role: 'Product lead' },
+        { year: '2022', name: 'P2P Reviews', em: 'peer review format', role: 'Format designer' },
+        { year: '2021', name: 'Deep Work Studio', em: 'founding', role: 'Founder' }
+      ]
+    },
+    {
+      id: '002', slug: 'jules', name: 'Jules', role: 'Cynefin Consultant',
+      tagline: 'Sense-making · €200/hr', tags: ['Sense-making', 'Strategy'],
+      bio: "Cynefin practitioner working with founders and operators stuck in genuinely complex situations — the kind where best practice doesn't apply because nobody has been here before. Trained directly under Dave Snowden's Cognitive Edge. Background in policy, then crypto governance, then a long detour into livelihood research in coastal communities.",
+      links: [
+        { label: 'Website', value: 'julesconsulting.com', href: '#' },
+        { label: 'LinkedIn', value: '/in/jules-cynefin', href: '#' },
+        { label: 'Telegram', value: '@julescynefin', href: '#' },
+        { label: 'Email', value: 'jules@sanctuary.studio', href: '#' }
+      ],
+      services: [
+        {
+          category: 'gtm', name: 'Office Hours',
+          desc: "A single hour to think out loud with someone trained in complex sense-making. Useful when you can feel the situation is non-trivial but can't yet name what's actually going on.",
+          bullets: [
+            'Diagnose whether your problem is complicated, complex, or chaotic.',
+            'Surface the constraints and dispositions you might be missing.',
+            'Booked by the hour. No commitment beyond the call.'
+          ],
+          priceLabel: 'Rate', price: '€200', priceUnit: '/ hr', shortPrice: '€200/hr'
+        },
+        {
+          category: 'gtm', name: 'Estuarine Mapping',
+          desc: "A facilitated workshop session that maps the constraints and dispositions shaping your situation, then identifies where small interventions can shift the system. The output is a map you and your team can act on — and a clear answer to the only question that matters in complexity: what do we do next.",
+          bullets: [
+            'Walk out with a written map of what is shifting your situation, and what is anchoring it.',
+            'Identify the specific small experiments most likely to move the system.',
+            'Built for situations where strategy decks and roadmaps have stopped helping.'
+          ],
+          priceLabel: 'Workshop', price: '$1,000', priceUnit: '', shortPrice: '$1,000'
+        }
+      ],
+      projects: [
+        { year: '2025', name: 'Coastal Futures', em: 'livelihood mapping', role: 'Lead facilitator' },
+        { year: '2024', name: 'Protocol Guild', em: 'governance design', role: 'Cynefin advisor' },
+        { year: '2024', name: 'Sanctuary', em: 'cohort sense-making', role: 'Workshop lead' },
+        { year: '2023', name: 'Climate Foundation', em: 'strategy review', role: 'Consultant' }
+      ]
+    },
+    {
+      id: '003', slug: 'jane', name: 'Jane', role: 'Narrative & Research',
+      tagline: 'Narrative Testing · $200/hr', tags: ['Research', 'Narrative'],
+      bio: "Researcher and narrative tester. Spent five years at a brand strategy firm watching companies pay six figures for positioning that didn't survive contact with the market. Now runs lean ad-driven tests that tell you, within a week, which message actually pulls — and which one only sounded good in the room.",
+      links: [
+        { label: 'Website', value: 'janeresearch.co', href: '#' },
+        { label: 'LinkedIn', value: '/in/jane-narrative', href: '#' },
+        { label: 'Telegram', value: '@janenarrative', href: '#' },
+        { label: 'Email', value: 'jane@sanctuary.studio', href: '#' }
+      ],
+      services: [
+        {
+          category: 'gtm', name: 'Office Hours',
+          desc: "A single hour to talk through your messaging, your audience hypothesis, or the gap between what you say and what your customers hear. Bring whatever you've got — drafts, decks, customer quotes.",
+          bullets: [
+            'Pressure-test your positioning before you commit budget to it.',
+            'Talk through which audience cut to test first, and why.',
+            'Booked by the hour. No commitment beyond the call.'
+          ],
+          priceLabel: 'Rate', price: '$200', priceUnit: '/ hr', shortPrice: '$200/hr'
+        },
+        {
+          category: 'gtm', name: 'Narrative Testing',
+          desc: "A structured test of your messaging in the wild. I run a small Facebook ad campaign across several variants of your story, then analyse which ones actually resonate. The output is a strategy document showing where to find your audience, what narrative pulls them in, and what to say first.",
+          bullets: [
+            'Stop guessing what your audience cares about — see which message they click on.',
+            'Get a clear read on which positioning works before you build the marketing site.',
+            'Walk away with an evidence-based GTM narrative and a list of audience segments to focus on.'
+          ],
+          priceLabel: 'Engagement', price: '$500', priceUnit: '', shortPrice: '$500'
+        }
+      ],
+      projects: [
+        { year: '2025', name: 'Verbatim', em: 'positioning test', role: 'Researcher' },
+        { year: '2024', name: 'Loop Health', em: 'narrative discovery', role: 'Lead' },
+        { year: '2024', name: 'Northwind DAO', em: 'audience research', role: 'Consultant' },
+        { year: '2023', name: 'Several brand strategy firm clients', em: 'narrative work', role: 'Senior strategist' }
+      ]
+    },
+    {
+      id: '004', slug: 'dan', name: 'Dan Urquhart', role: 'Designer',
+      tagline: 'Product & Visual Design · $200/hr', tags: ['Product', 'Visual'],
+      bio: "Independent designer with a decade of practice across consumer apps, defi tooling, and brand systems for technical companies. Believes the interface is the product, and the wordmark is the handshake. Based in Berlin, works with teams everywhere.",
+      links: [
+        { label: 'Website', value: 'danurquhart.design', href: '#' },
+        { label: 'LinkedIn', value: '/in/dan-urquhart', href: '#' },
+        { label: 'Telegram', value: '@danurq', href: '#' },
+        { label: 'Email', value: 'dan@sanctuary.studio', href: '#' }
+      ],
+      services: [
+        {
+          category: 'gtm', name: 'Office Hours',
+          desc: "A single hour to talk through a design problem, a product decision, or where to start when the surface area feels too big. Bring rough work — the messier, the more useful.",
+          bullets: [
+            'Get unstuck on a specific design or product question.',
+            'Pressure-test a direction before committing engineering time.',
+            'Booked by the hour. No commitment beyond the call.'
+          ],
+          priceLabel: 'Rate', price: '$200', priceUnit: '/ hr', shortPrice: '$200/hr'
+        },
+        {
+          category: 'product', name: 'Product Design Sprint',
+          desc: "A focused two-week engagement to redesign a critical product surface — onboarding, a checkout flow, a dashboard. Ends with shipped Figma files, a component library handoff, and a written rationale your engineers can actually build from.",
+          bullets: [
+            'Audit the existing flow and identify the one or two leverage points.',
+            'Redesign with a working prototype, not just static screens.',
+            'Hand off production-ready files with a written design rationale.'
+          ],
+          priceLabel: 'Rate', price: '$200', priceUnit: '/ hr', shortPrice: '$200/hr'
+        },
+        {
+          category: 'visual', name: 'Identity System',
+          desc: "Wordmark, type system, colour, motion — the full kit. Built for companies who want a brand that holds up against scrutiny, not just a logo that fits on a t-shirt. Includes a brand guide and a starter web template.",
+          bullets: [
+            'Wordmark, palette, typography, and motion principles.',
+            'Brand guidelines document with usage rules and edge cases.',
+            'Starter assets: web template, deck template, social kit.'
+          ],
+          priceLabel: 'Rate', price: '$200', priceUnit: '/ hr', shortPrice: '$200/hr'
+        }
+      ],
+      projects: [
+        { year: '2025', name: 'Lattice Labs', em: 'product design', role: 'Lead designer' },
+        { year: '2024', name: 'Otterly Finance', em: 'identity & app', role: 'Brand & product' },
+        { year: '2024', name: 'Northwind DAO', em: 'governance UI', role: 'Product designer' },
+        { year: '2023', name: 'Fieldnote', em: 'mobile app', role: 'Founding designer' },
+        { year: '2023', name: 'Slow Capital', em: 'identity system', role: 'Brand lead' },
+        { year: '2022', name: 'Verb Studios', em: 'web platform', role: 'Design partner' }
+      ]
+    },
+    { id: '005', slug: 'ramona', name: 'Ramona', role: 'Cayman Islands · Legal', tags: ['Legal eng.', 'Structuring'] },
+    { id: '006', slug: 'anna', name: 'Anna', role: 'PhD · Research', tags: ['Wearables', 'Research'] },
+    { id: '007', slug: 'colin', name: 'Colin', role: 'Real Estate Purchase', tags: ['Real estate', 'Deals'] },
+    { id: '008', slug: 'stacey', name: 'Stacey', role: 'Marketing', tags: ['Marketing', 'Story'] },
+    { id: '009', slug: 'jordi', name: 'Jordi', role: 'Web3 · Research', tags: ['Crypto', 'Mechanism'] }
+  ];
+
+  TEAM.sort((a, b) => a.id.localeCompare(b.id));
+
+  const tabs = document.querySelectorAll('.nav-tab');
+  const pages = document.querySelectorAll('.page');
+  function goPage(name) {
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.page === name));
+    pages.forEach(p => p.classList.toggle('active', p.id === 'page-' + name));
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+  tabs.forEach(tab => tab.addEventListener('click', () => goPage(tab.dataset.page)));
+
+  const grid = document.getElementById('team-grid');
+  TEAM.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'team-card';
+    card.innerHTML = `
+      <div class="team-arrow">↗</div>
+      <div class="team-photo"></div>
+      <div class="team-meta-line"><span class="team-id">ID-${m.id}</span></div>
+      <div class="team-name">${m.name}</div>
+      <div class="team-role">${m.role}</div>
+      <div class="team-tags">${(m.tags || []).map(t => `<span class="team-tag">${t}</span>`).join('')}</div>
+    `;
+    card.addEventListener('click', () => openProfile(m.slug));
+    grid.appendChild(card);
+  });
+
+  function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  function renderProfile(member) {
+    if (!member.bio) {
+      return `
+        <div class="profile-bar">
+          <div class="profile-bar-inner">
+            <span><a href="#" onclick="goPage('team'); return false;">← Back to team</a></span>
+            <span>Profile coming soon</span>
+          </div>
+        </div>
+        <div style="padding: 80px 32px; max-width: 720px; margin: 0 auto; text-align: center;">
+          <h1 style="font-family: 'Fraunces', serif; font-weight: 300; font-size: 48px; letter-spacing: -0.025em; margin-bottom: 16px;">${escapeHtml(member.name)}</h1>
+          <p style="color: var(--ink-soft); font-size: 16px;">Full profile coming soon. In the meantime, get in touch via Andrej.</p>
+        </div>
+      `;
+    }
+    const memberIndex = TEAM.findIndex(m => m.slug === member.slug) + 1;
+    const total = TEAM.length;
+    const servicesHtml = member.services.map((s, i) => `
+      <div class="service-detail">
+        <div class="service-detail-num">${String(i + 1).padStart(2, '0')}</div>
+        <div class="service-detail-body">
+          <h4 class="service-detail-title">${escapeHtml(s.name)}</h4>
+          <p class="service-detail-desc">${escapeHtml(s.desc)}</p>
+          <div class="service-detail-bullets">
+            ${s.bullets.map(b => `<div class="service-detail-bullet">${escapeHtml(b)}</div>`).join('')}
+          </div>
+        </div>
+        <div class="service-detail-meta">
+          <div class="meta-block">
+            <div class="meta-label">${escapeHtml(s.priceLabel)}</div>
+            <div class="meta-price">${escapeHtml(s.price)}${s.priceUnit ? `<span class="em">${escapeHtml(s.priceUnit)}</span>` : ''}</div>
+          </div>
+          ${s.trackRecord ? `
+            <div class="meta-block">
+              <div class="meta-label">Track record</div>
+              <div class="track-record">
+                ${s.trackRecord.map(t => `<div class="track-item">${escapeHtml(t)}</div>`).join('')}
+              </div>
+            </div>` : ''}
+        </div>
+      </div>
+    `).join('');
+    const projectsHtml = (member.projects || []).map(p => `
+      <div class="project-row">
+        <span class="project-year">${escapeHtml(p.year)}</span>
+        <span class="project-name">${escapeHtml(p.name)} <span class="em">/ ${escapeHtml(p.em)}</span></span>
+        <span class="project-role">${escapeHtml(p.role)}</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    `).join('');
+    return `
+      <div class="profile-bar">
+        <div class="profile-bar-inner">
+          <span><a href="#" onclick="goPage('team'); return false;">← Back to team</a></span>
+          <span>Member ${String(memberIndex).padStart(2, '0')} of ${String(total).padStart(2, '0')}</span>
+        </div>
+      </div>
+      <div class="profile-main">
+        <aside class="profile-left">
+          <div class="profile-photo"></div>
+          <div class="profile-id">ID-${member.id} / ${escapeHtml(member.role)}</div>
+          <h1 class="profile-name">${escapeHtml(member.name)}</h1>
+          <p class="profile-desc">${escapeHtml(member.bio)}</p>
+          <div class="profile-links">
+            ${member.links.map(l => `
+              <a href="${escapeHtml(l.href)}" class="profile-link">
+                <span class="label">${escapeHtml(l.label)}</span>
+                <span>${escapeHtml(l.value)}</span>
+                <span class="ext">↗</span>
+              </a>`).join('')}
+          </div>
+        </aside>
+        <main class="profile-right">
+          <div class="profile-section">
+            <div class="profile-section-head">
+              <h3 class="profile-section-title">Services</h3>
+              <span class="profile-section-count">${String(member.services.length).padStart(2, '0')} offerings</span>
+            </div>
+            <div class="service-detail-list">${servicesHtml}</div>
+          </div>
+          ${member.projects && member.projects.length ? `
+            <div class="profile-section">
+              <div class="profile-section-head">
+                <h3 class="profile-section-title">Past projects</h3>
+                <span class="profile-section-count">Selected · ${String(member.projects.length).padStart(2, '0')}</span>
+              </div>
+              <div class="projects-list">${projectsHtml}</div>
+            </div>
+          ` : ''}
+        </main>
+      </div>
+      <footer class="footer">
+        <div class="footer-inner">
+          <div>© Deep Work Network 2026</div>
+          <div>
+            <a href="#">Substack</a>
+            <a href="#">Telegram</a>
+            <a href="#">Email</a>
+          </div>
+        </div>
+      </footer>
+    `;
+  }
+
+  function openProfile(slug) {
+    const member = TEAM.find(m => m.slug === slug);
+    if (!member) return;
+    document.getElementById('profile-content').innerHTML = renderProfile(member);
+    goPage('profile');
+  }
+  window.openProfile = openProfile;
+  window.goPage = goPage;
+
+  function renderServicesPage() {
+    const allServices = [];
+    TEAM.forEach(m => { if (m.services) m.services.forEach(s => allServices.push({ ...s, member: m })); });
+    document.getElementById('services-count').textContent =
+      `${String(allServices.length).padStart(2, '0')} offerings · ${TEAM.filter(m => m.services).length} operators`;
+    const cats = CATEGORIES.map(cat => {
+      const inCat = allServices.filter(s => s.category === cat.key);
+      const operators = new Set(inCat.map(s => s.member.slug)).size;
+      return { ...cat, services: inCat, operatorCount: operators };
+    });
+    const cardHtml = (s) => `
+      <div class="catalog-card" onclick="openProfile('${s.member.slug}')">
+        <div class="catalog-card-person">
+          <div class="catalog-card-avatar">${escapeHtml(s.member.name.charAt(0))}</div>
+          <div class="catalog-card-person-name">${escapeHtml(s.member.name)}</div>
+        </div>
+        <div class="catalog-card-name">${escapeHtml(s.name)}</div>
+        <div class="catalog-card-desc">${escapeHtml(s.desc)}</div>
+        <div class="catalog-card-foot">
+          <div class="catalog-card-price">${escapeHtml(s.price)}${s.priceUnit ? `<span class="em">${escapeHtml(s.priceUnit)}</span>` : ''}</div>
+          <div class="catalog-card-arrow">↗</div>
+        </div>
+      </div>
+    `;
+    const columnsHtml = `
+      <div class="services-catalog-columns">
+        ${cats.map(cat => `
+          <div class="catalog-column">
+            <div class="catalog-column-head">
+              <div class="catalog-column-num">§ ${cat.num} / Practice</div>
+              <h3 class="catalog-column-title">${escapeHtml(cat.title)}</h3>
+              <div class="catalog-column-desc">${escapeHtml(cat.desc)}</div>
+              <div class="catalog-column-meta">${String(cat.services.length).padStart(2, '0')} offering${cat.services.length !== 1 ? 's' : ''} · ${cat.operatorCount} operator${cat.operatorCount !== 1 ? 's' : ''}</div>
+            </div>
+            ${cat.services.length ? cat.services.map(cardHtml).join('') : '<div class="catalog-empty">No offerings in this practice yet.</div>'}
+          </div>
+        `).join('')}
+      </div>
+    `;
+    const tabsHtml = `
+      <div class="services-catalog-tabs">
+        <div class="catalog-tabs-bar">
+          ${cats.map((cat, i) => `
+            <div class="catalog-tab ${i === 0 ? 'active' : ''}" data-cat-tab="${cat.key}">
+              ${escapeHtml(cat.title)}
+              <span class="catalog-tab-count">${String(cat.services.length).padStart(2, '0')}</span>
+            </div>
+          `).join('')}
+        </div>
+        ${cats.map((cat, i) => `
+          <div class="catalog-panel ${i === 0 ? 'active' : ''}" data-cat-panel="${cat.key}">
+            <div class="catalog-column-head">
+              <div class="catalog-column-num">§ ${cat.num} / Practice</div>
+              <h3 class="catalog-column-title">${escapeHtml(cat.title)}</h3>
+              <div class="catalog-column-desc">${escapeHtml(cat.desc)}</div>
+              <div class="catalog-column-meta">${String(cat.services.length).padStart(2, '0')} offering${cat.services.length !== 1 ? 's' : ''} · ${cat.operatorCount} operator${cat.operatorCount !== 1 ? 's' : ''}</div>
+            </div>
+            ${cat.services.length ? cat.services.map(cardHtml).join('') : '<div class="catalog-empty">No offerings in this practice yet.</div>'}
+          </div>
+        `).join('')}
+      </div>
+    `;
+    document.getElementById('services-categories').innerHTML = columnsHtml + tabsHtml;
+    document.querySelectorAll('.catalog-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const key = tab.dataset.catTab;
+        document.querySelectorAll('.catalog-tab').forEach(t => t.classList.toggle('active', t.dataset.catTab === key));
+        document.querySelectorAll('.catalog-panel').forEach(p => p.classList.toggle('active', p.dataset.catPanel === key));
+      });
+    });
+  }
+  renderServicesPage();
+  document.getElementById('profile-content').innerHTML = renderProfile(TEAM.find(m => m.slug === 'andrej'));
+
+  function sendChat() {
+    const input = document.getElementById('chat-input');
+    const log = document.getElementById('chat-log');
+    const text = input.value.trim();
+    if (!text) return;
+    const u = document.createElement('div');
+    u.className = 'chat-msg user'; u.textContent = text;
+    log.appendChild(u);
+    input.value = '';
+    setTimeout(() => {
+      const b = document.createElement('div');
+      b.className = 'chat-msg bot';
+      b.textContent = "Thanks — let me think on that. (Placeholder. Connect Aria to the API to make this live.)";
+      log.appendChild(b);
+      log.scrollTop = log.scrollHeight;
+    }, 500);
+    log.scrollTop = log.scrollHeight;
+  }
+  window.sendChat = sendChat;
+  document.getElementById('chat-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') sendChat();
+  });
+</script>
+</body>
+</html>

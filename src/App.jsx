@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -7,21 +7,26 @@ import Membership from './pages/Membership'
 import Join from './pages/Join'
 import Container from './pages/Container'
 import Tools from './pages/Tools'
+import DeepWork from './pages/DeepWork'
 
 export default function App() {
+  const location = useLocation()
+  const isDeepWorkPage = location.pathname === '/deepwork'
+
   try {
     return (
       <>
         <ScrollToTop />
-        <Nav />
+        {!isDeepWorkPage && <Nav />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/membership" element={<Membership />} />
           <Route path="/join" element={<Join />} />
           <Route path="/container" element={<Container />} />
           <Route path="/tools" element={<Tools />} />
+          <Route path="/deepwork" element={<DeepWork />} />
         </Routes>
-        <Footer />
+        {!isDeepWorkPage && <Footer />}
       </>
     )
   } catch (error) {
