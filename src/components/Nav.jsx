@@ -11,7 +11,7 @@ export default function Nav() {
     <nav>
       <div className="nav-container">
         <Link to="/" className="nav-wordmark">
-          <img src="/logo.svg" alt="Sanctuary" />
+          <img src="/brand-mark.png" alt="Sanctuary" />
         </Link>
         
         {/* Mobile CTA - always visible */}

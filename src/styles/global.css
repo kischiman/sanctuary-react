@@ -201,6 +201,25 @@ nav .nav-container {
   max-width: 620px;
 }
 
+.featured-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+  max-width: 760px;
+}
+
+.featured-project-card {
+  border: 1px solid var(--faint);
+  border-radius: 4px;
+  min-height: 160px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.02), rgba(26, 26, 26, 0.04));
+}
+
 /* ─── SECTIONS ─────────────────────────────────── */
 .section-wrap {
   max-width: var(--max-width);
@@ -964,6 +983,7 @@ footer.site-footer span {
   .residency-card { padding: 2rem 1.5rem; }
   .nav-links { gap: 1rem; }
   .hero h1 { font-size: 2rem; }
+  .featured-projects-grid { grid-template-columns: 1fr; }
   .invitation-inner { grid-template-columns: 1fr; gap: 0.75rem; }
   .pricing-grid { grid-template-columns: 1fr; }
   .tier { border-right: none; border-bottom: 1px solid var(--rule); }

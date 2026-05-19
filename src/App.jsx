@@ -20,6 +20,7 @@ export default function App() {
         {!isDeepWorkPage && <Nav />}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/updatedhome" element={<Home />} />
           <Route path="/membership" element={<Membership />} />
           <Route path="/join" element={<Join />} />
           <Route path="/container" element={<Container />} />
