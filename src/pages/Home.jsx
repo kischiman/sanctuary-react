@@ -19,7 +19,7 @@ export default function Home() {
         </div>
         <h1>Sanctuary</h1>
         <p className="hero-subtitle">
-        A curated network of physical spaces for value-aligned product builders and ecosystem developers
+        A curated community of product builders, ecosystem developers, and residencies.
         </p>
       </div>
 
@@ -74,7 +74,7 @@ export default function Home() {
         <FadeIn className="two-col">
           <div className="sidebar-label">03 — Environments</div>
           <div className="content">
-            <h2>Build with your ideal users in healthy environments</h2>
+            <h2>Build with community in health environments</h2>
             <p>
               A safe space to balance nature and technological innovation. Co-live with a curated group of experts, get direct access to your target audiences, and apply bespoke protocols to reach your health goals. Our network of physical hubs acts an innovation lab for how environment, protocols, and technologies can accelerate socio-technical innovation.
             </p>
