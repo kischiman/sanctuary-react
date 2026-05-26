@@ -41,9 +41,9 @@ export default function Container2() {
       <div className="page-header page-header--container2">
         <hr />
         <div className="breadcrumb">Container 2 — Sanctuary Residency</div>
-        <h1>Leave with a protocol for the next year of your life and the data to know it works.</h1>
+        <h1>A safe space for high performers</h1>
         <p className="subtitle">
-          You&apos;re not here for a vacation, and you&apos;re not here to follow someone else&apos;s plan. You&apos;re here to do work that matters, with people who take it as seriously as you do.
+          Transform your health, do the work that matters, and connect with others who take it as seriously as you do.
         </p>
       </div>
 
@@ -51,7 +51,7 @@ export default function Container2() {
         <div className="container2-hero-copy">
           <div className="container2-eyebrow">A two-week residency</div>
           <p>
-            A private house, a hand-picked cohort, and two weeks designed around the conditions that let recovery, experimentation, and protocol design actually take root.
+            Sanctuary is a two-week residency for a small, curated group. You arrive in a private location in nature, design your own protocol, and run it with experts who accelerate your progress. You may draw on psychedelics, peptides, gut health, neuroscience and movement.
           </p>
           <button type="button" className="btn-tier btn-tier--filled" onClick={() => setIsApplicationOpen(true)}>
             Request to Join
