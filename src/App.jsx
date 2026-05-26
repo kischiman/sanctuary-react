@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Membership from './pages/Membership'
 import Join from './pages/Join'
 import Container from './pages/Container'
+import Container2 from './pages/Container2'
 import Tools from './pages/Tools'
 import DeepWork from './pages/DeepWork'
 
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/membership" element={<Membership />} />
           <Route path="/join" element={<Join />} />
           <Route path="/container" element={<Container />} />
+          <Route path="/container2" element={<Container2 />} />
           <Route path="/tools" element={<Tools />} />
           <Route path="/deepwork" element={<DeepWork />} />
         </Routes>
